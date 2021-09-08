@@ -1064,7 +1064,7 @@
 }
 
 .left_col {
-    background: #571c33
+    background: #beafa6
 }
 
 .container {
@@ -1187,7 +1187,7 @@
 
 .menu_section h3 {
     padding-left: 23px;
-    color: #fff;
+    color: #63534a;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: bold;
@@ -1340,7 +1340,7 @@ body .container.body .right_col {
 .nav_title {
     width: 230px;
     float: left;
-    background: #571c33;
+    background: #beafa6;
     border-radius: 0;
     height: 57px;
     padding: 0px
@@ -1501,8 +1501,8 @@ body .container.body .right_col {
 }
 
 body {
-    color: #3f3f3f;
-    background: #2A3F54;
+    color: #654d41;
+    background: #beafa6;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -1635,7 +1635,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 
 a {
-    color: #5A738E;
+    color: #443b36;
     text-decoration: none
 }
 
@@ -1773,8 +1773,8 @@ a:hover, a:focus {
 }
 
 .nav.side-menu > li > a, .nav.child_menu > li > a {
-    color: #E7E7E7;
-    font-weight: 500
+    color: #ffffff;
+    font-weight: 750
 }
 
 .nav.child_menu li li:hover, .nav.child_menu li li.active {
@@ -1796,7 +1796,7 @@ a:hover, a:focus {
 }
 
 .nav li.current-page {
-    background: rgba(255, 255, 255, 0.05)
+    background: #d1bdb1
 }
 
 .nav li li li.current-page {
@@ -1810,7 +1810,7 @@ a:hover, a:focus {
 .nav.side-menu > li.active > a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
     background: -webkit-gradient(linear, left top, left bottom, from(#334556), to(#2C4257)), #2A3F54;
-    background: linear-gradient(#c08838, #571c33), #2A3F54;
+    background: linear-gradient(#90705e, #90705e), #2A3F54;
     -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0
 }
@@ -1832,7 +1832,7 @@ a:hover, a:focus {
     margin-left: 0 !important;
     line-height: 59px;
     display: block;
-    height: 100px;
+    height: 120px;
     margin: 5px;
     padding-left: 30px
 }
@@ -1887,7 +1887,8 @@ a:hover, a:focus {
 .toggle {
     float: left;
     margin: 0;
-    width: 70px
+    width: 70px;
+    color: #90705f;
 }
 
 .toggle a {
@@ -1931,7 +1932,8 @@ a:hover, a:focus {
 }
 
 .main_menu_side {
-    padding: 0
+    padding: 0;
+    margin-top: 80px;
 }
 
 .bs-docs-sidebar .nav > li > a {
@@ -2829,7 +2831,7 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 230px;
-    background: #2A3F54
+    background: #beafa6
 }
 
 .sidebar-footer a {
@@ -2839,7 +2841,7 @@ span.right {
     font-size: 17px;
     display: block;
     float: left;
-    background: #2b0a17
+    background: #91715f
 }
 
 .sidebar-footer a:hover {
@@ -3642,8 +3644,9 @@ a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
 
 .btn-dark {
     color: #E9EDEF;
-    background-color: #611533;
-    border-color: #611533
+    background-color: #8c6f60;
+    border-color: #4c2a18;
+    border-width: 2px;
 }
 
 .btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .open .dropdown-toggle.btn-dark {
