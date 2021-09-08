@@ -22,8 +22,8 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 162px;height: 102px"
-                                                         src="../../images/logo.png">
+            <a href="dashboard" class="site_title"> <img style="margin-top: 20px; width: 162px;height: 102px"
+                                                         src="../../images/logonewe.png">
                    </a>
         </div>
 
@@ -91,24 +91,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-anchor"></i> Additional Pages <span
-                            class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="contacts">Contacts</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-ge"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="login">Login Page</a></li>
-                            <li><a href="pricing">Pricing Tables</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+
         </div>
         <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">

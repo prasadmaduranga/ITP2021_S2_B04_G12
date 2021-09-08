@@ -106,7 +106,7 @@ public interface KitchenBO extends SuperBO {
     List<RestaurantFoodOrderDTO> getOnlineRestaurantFoodOrdersByDate(java.util.Date date);
 
     List<RestaurantFoodOrderDTO> getCounterRestaurantFoodOrdersByDate(java.util.Date date);
-    
+
     boolean takeRestaurantOrder(RestaurantFoodOrderDTO order);
 
     void confirmRestaurantOrder(RestaurantFoodOrderDTO orderDTO);
