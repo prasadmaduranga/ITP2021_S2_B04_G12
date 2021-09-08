@@ -1,7 +1,9 @@
 package lk.sliit.hotel.service.custom;
 
 import lk.sliit.hotel.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotel.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
+import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDTO;
+import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
+import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 //import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 //import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 //import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
@@ -13,42 +15,47 @@ import java.util.Date;
 import java.util.List;
 
 public interface RestaurantBO {
+
     RestaurantCounterOrderDTO findTopByOrderByRestIdDesc();
 
     void saveRestaurantOrder(RestaurantCounterOrderDTO restaurantCounterOrderDTO);
 
     List<FoodItemDTO> findAllFoodItems(String restaurant);
 
-//    List<RestaurantTableDTO> findAllTable();
-//
-//    //List<RestaurantTableDTO> findAllTableDateEqual(Date date, Date startTime, Date endTime);
-//
+
+
+    List<RestaurantTableDTO> findAllTable();
+
+
+    List<RestaurantTableDTO> getAviTables(Date date, Date startTime, Date endTime);
+
+    RestaurantTableDTO findHighestTableId();
+
+    void saveTable(RestaurantTableDTO restaurantTableDTO);
+
+    void deleteTable(int tableId);
+
+    RestaurantTableDTO findTableById(int tableId);
+
+    CounterTableReservationDTO findHighestCounterTableId();
+
+    List<CounterTableReservationDTO> getBookedTables();
+
+    void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO);
+
+
+
 //    RestaurantOnlineOrderDTO findHighestOnlineOrderId();
 //
 //    void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
 //
 //
-//    List<RestaurantTableDTO> getAviTables(Date date, Date startTime, Date endTime);
-//
-//    RestaurantTableDTO findHighestTableId();
-//
-//    void saveTable(RestaurantTableDTO restaurantTableDTO);
-//
-//   /* List<RestaurantTableDTO> findTables();*/
-//
-//    void deleteTable(int tableId);
-//
-//    RestaurantTableDTO findTableById(int tableId);
-//
-//    OnlineTableReservationDTO findHighestOnlineTableId();
-//    CounterTableReservationDTO  findHighestCounterTableId();
-//
+
+// OnlineTableReservationDTO findHighestOnlineTableId();
+
 //    void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO);
 //
-//    List<CounterTableReservationDTO> getBookedTables();
-//
-//    void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO);
-//
+
 //    List<OnlineTableReservationDTO> findTablesOnline();
 //
 //    List<RestaurantOnlineOrderDTO> findOrderOnline();

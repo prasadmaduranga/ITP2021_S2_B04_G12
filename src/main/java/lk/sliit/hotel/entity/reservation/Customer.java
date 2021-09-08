@@ -1,7 +1,6 @@
 package lk.sliit.hotel.entity.reservation;
 
 import lk.sliit.hotel.entity.banquet.BanquetOrder;
-import lk.sliit.hotel.entity.houseKeeping.LaundryBill;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
