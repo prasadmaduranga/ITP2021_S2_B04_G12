@@ -1,32 +1,28 @@
 package lk.sliit.hotel.dto.banquet;
 
+
 import java.util.Date;
 
 public class BanquetOrderDTO {
+
     private int orderId;
     private String hallId;
     private String orderState;
     private int noOfPlates;
     private Date date;
     private String submittedBy;
-    private String customerId;
-    private String menuId;
-    private int banquetBillId;
 
-    public BanquetOrderDTO(int orderId, String hallId, String orderState, int noOfPlates, Date date,
-                           String submittedBy, String customerId, String menuId, int banquetBillId) {
+    public BanquetOrderDTO(){
+    }
+
+    public BanquetOrderDTO(int orderId, String hallId, String orderState,
+                           int noOfPlates, Date date, String submittedBy) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
         this.noOfPlates = noOfPlates;
         this.date = date;
         this.submittedBy = submittedBy;
-        this.customerId = customerId;
-        this.menuId = menuId;
-        this.banquetBillId = banquetBillId;
-    }
-
-    public BanquetOrderDTO() {
     }
 
     public BanquetOrderDTO(int orderId) {
@@ -81,42 +77,16 @@ public class BanquetOrderDTO {
         this.submittedBy = submittedBy;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
-    }
-
-    public int getBanquetBillId() {
-        return banquetBillId;
-    }
-
-    public void setBanquetBillId(int banquetBillId) {
-        this.banquetBillId = banquetBillId;
-    }
-
     @Override
-    public String toString() {
-        return "BanquetOrderDTO{" +
-                "orderId='" + orderId + '\'' +
-                ", hallId='" + hallId + '\'' +
-                ", orderState='" + orderState + '\'' +
-                ", noOfPlates=" + noOfPlates +
+    public String toString(){
+        return "BanquetOrderDTO {" +
+                "Order_Id ='"+ orderId + '\'' +
+                ",Hall_Id ='"+ hallId  + '\''+
+                ",OderState ='"+orderState+ '\''+
+                ",No_Of_Plates= '"+noOfPlates+ '\''+
                 ", date=" + date +
                 ", submittedBy='" + submittedBy + '\'' +
-                ", customerId='" + customerId + '\'' +
-                ", menuId='" + menuId + '\'' +
-                ", banquetBillId='" + banquetBillId + '\'' +
                 '}';
     }
+
 }
