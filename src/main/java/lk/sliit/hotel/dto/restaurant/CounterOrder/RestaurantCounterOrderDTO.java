@@ -1,4 +1,4 @@
-package lk.sliit.hotel.dto.restaurant.restaurantCounterOrder;
+package lk.sliit.hotel.dto.restaurant.CounterOrder;
 
 import java.util.ArrayList;
 import java.util.Date;

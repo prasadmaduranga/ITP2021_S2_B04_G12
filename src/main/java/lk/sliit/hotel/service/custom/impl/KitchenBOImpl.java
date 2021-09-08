@@ -17,7 +17,7 @@ import lk.sliit.hotel.dto.banquet.LimitDTO;
 import lk.sliit.hotel.dto.inventory.InventoryDTO;
 import lk.sliit.hotel.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotel.dto.kitchen.*;
-import lk.sliit.hotel.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotel.entity.banquet.BanquetOrder;
 import lk.sliit.hotel.entity.banquet.OrderLimit;
 import lk.sliit.hotel.entity.inventory.Inventory;

@@ -1,4 +1,4 @@
-package lk.sliit.hotel.dto.restaurant.restaurantCounterOrder;
+package lk.sliit.hotel.dto.restaurant.CounterOrder;
 
 
 
