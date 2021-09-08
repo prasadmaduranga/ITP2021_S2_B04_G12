@@ -14,7 +14,7 @@ public class BanquetOrder {
     private int noOfPlates;
     private Date date;
     private String submittedBy;
-
+    // forieign key
 
     public BanquetOrder() {
     }
@@ -28,8 +28,6 @@ public class BanquetOrder {
         this.submittedBy = submittedBy;
 
     }
-
-
 
     public int getOrderId() {
         return orderId;
