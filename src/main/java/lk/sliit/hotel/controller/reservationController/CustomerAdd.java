@@ -127,7 +127,7 @@ public class CustomerAdd {
     public String saveOverTheCounterCustomer(@ModelAttribute CustomerDTO customerDTO) {
         boolean condition = true;
         if (reservationBO.findEmail(customerDTO.getEmail())) {
-            condition = false;
+            condition = true;
         }
         if(customerDTO.getCustomerId() != 0){
             condition = true;
