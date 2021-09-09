@@ -1,7 +1,13 @@
 package lk.sliit.hotel.entity.banquet;
 
+import lk.sliit.hotel.entity.kitchen.Menu;
+import lk.sliit.hotel.entity.reservation.Customer;
+import org.hibernate.engine.internal.Cascade;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Entity
@@ -14,7 +20,17 @@ public class BanquetOrder {
     private int noOfPlates;
     private Date date;
     private String submittedBy;
-    // forieign key
+
+    //foreign key added
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,  CascadeType.DETACH, CascadeType.MERGE })
+    @JoinColumn(name="Menu", referencedColumnName = "menuId")
+    private Menu menu;
+    @ManyToOne(cascade ={CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name = "customer", referencedColumnName = "customerId")
+    private Customer customer;
+    @OneToOne(cascade ={CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name="banquetBill", referencedColumnName="billId")
+    private BanquetBill banquetBill;
 
     public BanquetOrder() {
     }
@@ -61,11 +77,11 @@ public class BanquetOrder {
         this.noOfPlates = noOfPlates;
     }
 
-    public Date getDate() {
+    public java.sql.Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
 
@@ -75,5 +91,29 @@ public class BanquetOrder {
 
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public BanquetBill getBanquetBill() {
+        return banquetBill;
+    }
+
+    public void setBanquetBill(BanquetBill banquetBill) {
+        this.banquetBill = banquetBill;
     }
 }

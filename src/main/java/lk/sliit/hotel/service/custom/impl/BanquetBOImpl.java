@@ -1,6 +1,7 @@
 package lk.sliit.hotel.service.custom.impl;
 
-import lk.sliit.hotel.dao.banquetDAO.BanquetOrderDAO;
+import lk.sliit.hotel.dao.banquetDAO.BanquetAddDAO;
+import lk.sliit.hotel.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotel.dto.banquet.BanquetOrderDTO;
 import lk.sliit.hotel.dto.reservation.CustomerDTO;
 import lk.sliit.hotel.entity.banquet.BanquetOrder;
@@ -15,7 +16,7 @@ import java.util.List;
 public class BanquetBOImpl implements BanquetBO {
 
     @Autowired
-    BanquetOrderDAO banquetOrderDAO; // Inject the BanquetOrderDAO
+    BanquetAddDAO banquetOrderDAO; // Inject the BanquetOrderDAO
 
     @Autowired
    // CustomerDao customerDao; //Inject the CustomerDao
@@ -31,6 +32,11 @@ public class BanquetBOImpl implements BanquetBO {
 
     @Override
     public List<CustomerDTO> findAllCustomer() {
+        return null;
+    }
+
+    @Override
+    public List<BanquetAddDTO> findBanquetBill() {
         return null;
     }
 

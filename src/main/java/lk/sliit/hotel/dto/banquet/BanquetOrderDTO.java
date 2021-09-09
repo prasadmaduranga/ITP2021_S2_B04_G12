@@ -37,9 +37,7 @@ public class BanquetOrderDTO {
         this.orderId = orderId;
     }
 
-    public String getHallId() {
-        return hallId;
-    }
+    public String getHallId() { return hallId; }
 
     public void setHallId(String hallId) {
         this.hallId = hallId;

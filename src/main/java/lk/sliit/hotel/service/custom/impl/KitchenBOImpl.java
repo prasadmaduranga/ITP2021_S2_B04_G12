@@ -1,7 +1,7 @@
 package lk.sliit.hotel.service.custom.impl;
 
 import lk.sliit.hotel.controller.kitchenController.KitchenUtil;
-import lk.sliit.hotel.dao.banquetDAO.BanquetOrderDAO;
+import lk.sliit.hotel.dao.banquetDAO.BanquetAddDAO;
 import lk.sliit.hotel.dao.banquetDAO.LimitDAO;
 import lk.sliit.hotel.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotel.dao.inventoryDAO.InventoryNoticeDAO;
@@ -23,6 +23,7 @@ import lk.sliit.hotel.entity.banquet.OrderLimit;
 import lk.sliit.hotel.entity.inventory.Inventory;
 import lk.sliit.hotel.entity.inventory.InventoryNotice;
 import lk.sliit.hotel.entity.kitchen.FoodItem;
+import lk.sliit.hotel.entity.kitchen.MenuDetails;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotel.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
@@ -60,7 +61,7 @@ public class KitchenBOImpl implements KitchenBO {
     @Autowired
     InventoryDAO inventoryDAO;
     @Autowired
-    BanquetOrderDAO banquetOrderDAO;
+    BanquetAddDAO banquetOrderDAO;
     @Autowired
     RestaurantCounterOrderDAO counterOrderDAO;
     @Autowired
