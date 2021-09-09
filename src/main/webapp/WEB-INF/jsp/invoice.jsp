@@ -291,7 +291,7 @@
 
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <td><span id="val"></span></td>
+                                                        <td><span id="vallll"></span><br><span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -354,6 +354,13 @@
     for (var i = 1; i < table.rows.length; i++) {
         str = str + (table.rows[i].cells[0].innerHTML) + " ";
         sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        if (sumVal>5000) {
+
+            document.getElementById("vallll").innerHTML = "Customer reached the discount level";
+            sumVal = sumVal - 500;
+        }
+        else {}
+
         sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
         sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
 
