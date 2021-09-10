@@ -3634,8 +3634,8 @@ a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
 }
 
 .btn-success {
-    background: #26B99A;
-    border: 1px solid #169F85
+    background: #8c6f60;
+    border: 1px solid #4c2a18;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {

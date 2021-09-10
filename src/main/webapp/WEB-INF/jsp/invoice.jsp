@@ -356,7 +356,7 @@
         sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
         if (sumVal>5000) {
 
-            document.getElementById("vallll").innerHTML = "Customer reached the discount level";
+            document.getElementById("vallll").innerHTML = "Reached the discount level";
             sumVal = sumVal - 500;
         }
         else {}
