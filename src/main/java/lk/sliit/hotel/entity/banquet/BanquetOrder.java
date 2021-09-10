@@ -77,11 +77,11 @@ public class BanquetOrder {
         this.noOfPlates = noOfPlates;
     }
 
-    public java.sql.Date getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(java.sql.Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -93,20 +93,20 @@ public class BanquetOrder {
         this.submittedBy = submittedBy;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public Menu getMenu() {
         return menu;
     }
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public BanquetBill getBanquetBill() {
