@@ -25,23 +25,28 @@ public class BanquetOrder {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,  CascadeType.DETACH, CascadeType.MERGE })
     @JoinColumn(name="Menu", referencedColumnName = "menuId")
     private Menu menu;
-    @ManyToOne(cascade ={CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "customer", referencedColumnName = "customerId")
-    private Customer customer;
     @OneToOne(cascade ={CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="banquetBill", referencedColumnName="billId")
     private BanquetBill banquetBill;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE })
+    @JoinColumn(name = "banquetCustomer", referencedColumnName = "banquetCustomerId")
+    private BanquetCustomer banquetCustomer;
+
 
     public BanquetOrder() {
     }
 
-    public BanquetOrder(int orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy) {
+    public BanquetOrder(int orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy,
+                        Menu menu, BanquetCustomer banquetCustomer, BanquetBill banquetBill  ) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
         this.noOfPlates = noOfPlates;
         this.date = date;
         this.submittedBy = submittedBy;
+        this.banquetBill = banquetBill;
+        this.banquetCustomer = banquetCustomer;
+        this.menu = menu;
 
     }
 
@@ -101,12 +106,12 @@ public class BanquetOrder {
         this.menu = menu;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public BanquetCustomer getBanquetCustomer() {
+        return banquetCustomer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setBanquetCustomer(BanquetCustomer banquetCustomer) {
+        this.banquetCustomer = banquetCustomer;
     }
 
     public BanquetBill getBanquetBill() {

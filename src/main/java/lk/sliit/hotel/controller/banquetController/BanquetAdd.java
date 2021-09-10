@@ -2,6 +2,8 @@ package lk.sliit.hotel.controller.banquetController;
 
 
 import lk.sliit.hotel.controller.SuperController;
+import lk.sliit.hotel.dto.banquet.BanquetAddDTO;
+import lk.sliit.hotel.dto.banquet.BanquetCustomerDTO;
 import lk.sliit.hotel.dto.banquet.BanquetOrderDTO;
 import lk.sliit.hotel.dto.reservation.CustomerDTO;
 import lk.sliit.hotel.service.custom.BanquetBO;
@@ -37,13 +39,16 @@ public class BanquetAdd {
             model.addAttribute("topBanquetId", 1);
         }
 
+        try{
+            BanquetCustomerDTO banquetCustomerDTO = banquetBO.findTopBanquetCustomerId();
+            int topCustomer =(banquetCustomerDTO.getBanquetCustomerId() +1);
+        }catch(NullPointerException e){
+            model.addAttribute("topCustomerId", 1);
+        }
 
-        List<CustomerDTO> list= banquetBO.findAllCustomer();
-        mv.addObject("loadTable", list );
 
 
         return mv;
-
     }
 
 }
