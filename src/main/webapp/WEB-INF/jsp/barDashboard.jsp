@@ -238,7 +238,7 @@
 
                 <div id="chartdiv"></div>
                 <br>
-                <P><h6>This Week Income</h6></P>
+                <P><h6>This Month Income</h6></P>
             </div>
             <%--/Chart Today--%>
             <%--Chart Yesterday--%>
@@ -246,7 +246,7 @@
 
                 <div id="chartdiv1"></div>
                 <br>
-                <P><h6>Last Week Income</h6></P>
+                <P><h6>Last month Income</h6></P>
             </div>
             <%--/Chart Yesterday--%>
             <%--/Chart Income--%>
@@ -281,24 +281,21 @@
 
 // Add data
         chart.data = [{
-            "Date": "Sunday",
+            "Date": "week1",
             "Income": 334
         }, {
-            "Date": "Monday",
+            "Date": "week2",
             "Income": 1882
         }, {
-            "Date": "Tuesday",
-            "Income": 1809
+            "Date": "week3",
+            "Income": 0
         }, {
-            "Date": "Wednesday",
-            "Income": 1322
+            "Date": "week4",
+            "Income": 0
         }, {
-            "Date": "Friday",
-            "Income": 1122
-        }, {
-            "Date": "Saturday",
-            "Income": 1114
-        }];
+            "Date": "week5",
+            "Income": 0
+        },];
 
 // Create axes
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -354,24 +351,21 @@
 
 // Add data
         chart.data = [{
-            "Date": "Sunday",
-            "Income": 433
+            "Date": "week1",
+            "Income": 334
         }, {
-            "Date": "Monday",
-            "Income": 565
+            "Date": "week2",
+            "Income": 1882
         }, {
-            "Date": "Tuesday",
-            "Income": 23
+            "Date": "week3",
+            "Income": 1809
         }, {
-            "Date": "Wednesday",
-            "Income": 445
+            "Date": "week4",
+            "Income": 1322
         }, {
-            "Date": "Friday",
-            "Income": 763
-        }, {
-            "Date": "Saturday",
-            "Income": 1032
-        }];
+            "Date": "week5",
+            "Income": 1122
+        },];
 // Create axes
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "Date";
