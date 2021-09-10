@@ -8,6 +8,9 @@ public class BanquetBillDTO {
     private double otherPrice;
     private double advancePayment;
 
+    public BanquetBillDTO() {
+
+    }
 
 
 }

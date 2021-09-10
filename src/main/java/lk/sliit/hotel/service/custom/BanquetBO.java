@@ -1,19 +1,19 @@
 package lk.sliit.hotel.service.custom;
 
 import lk.sliit.hotel.dto.banquet.BanquetAddDTO;
+import lk.sliit.hotel.dto.banquet.BanquetCustomerDTO;
 import lk.sliit.hotel.dto.banquet.BanquetOrderDTO;
-import lk.sliit.hotel.dto.reservation.CustomerDTO;
+
+import lk.sliit.hotel.service.SuperBO;
 
 import java.util.List;
 
-public interface BanquetBO {
+public interface BanquetBO extends SuperBO {
 
 
     BanquetOrderDTO findTopBanquetId();
 
-    List<CustomerDTO> findAllCustomer();
-
     List<BanquetAddDTO> findBanquetBill();
 
-    // CustomerDTO findTopCustomerId();
+    BanquetCustomerDTO findTopBanquetCustomerId();
 }
