@@ -1,16 +1,11 @@
 package lk.sliit.hotel.service.custom;
 
-<<<<<<< HEAD
 import lk.sliit.hotel.dto.inventory.*;
 import lk.sliit.hotel.service.SuperBO;
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.hotelManagement.dto.inventory.*;
-import lk.sliit.hotelManagement.service.SuperBO;
-=======
 import lk.sliit.hotel.dto.bar.BarOrderDTO;
 import lk.sliit.hotel.dto.inventory.*;
 import lk.sliit.hotel.service.SuperBO;
->>>>>>> 4cbf78e853737b88d81f171f4ee43b8904952ab2
+
 
 import java.util.List;
 
