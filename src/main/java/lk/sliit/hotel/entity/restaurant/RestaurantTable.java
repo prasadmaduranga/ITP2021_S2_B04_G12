@@ -15,6 +15,7 @@ public class RestaurantTable {
     private int tableId;
     private String type;
     private double unitPrice;
+    private String place;
 //    @OneToMany(mappedBy = "tableId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
 //    private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
     @OneToMany(mappedBy = "tableId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -24,6 +25,21 @@ public class RestaurantTable {
         this.tableId = tableId;
         this.type = type;
         this.unitPrice = unitPrice;
+    }
+
+    public RestaurantTable(int tableId, String type, double unitPrice, String place) {
+        this.tableId = tableId;
+        this.type = type;
+        this.unitPrice = unitPrice;
+        this.place = place;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public RestaurantTable(int tableId) {

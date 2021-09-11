@@ -4,6 +4,8 @@ public class RestaurantTableDTO {
     private int tableId;
     private String type;
     private double unitPrice;
+    private String place;
+
 
     public RestaurantTableDTO() {
     }
@@ -12,6 +14,21 @@ public class RestaurantTableDTO {
         this.tableId = tableId;
         this.type = type;
         this.unitPrice = unitPrice;
+    }
+
+    public RestaurantTableDTO(int tableId, String type, double unitPrice, String place) {
+        this.tableId = tableId;
+        this.type = type;
+        this.unitPrice = unitPrice;
+        this.place = place;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public RestaurantTableDTO(int tableId) {

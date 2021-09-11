@@ -1,4 +1,4 @@
-package lk.sliit.hotelManagement.dto.inventory;
+package lk.sliit.hotel.dto.inventory;
 
 import java.sql.Date;
 

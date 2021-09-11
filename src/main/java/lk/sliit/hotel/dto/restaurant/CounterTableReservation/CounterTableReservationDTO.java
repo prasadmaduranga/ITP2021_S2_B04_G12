@@ -19,22 +19,25 @@ public class CounterTableReservationDTO {
     private String vDate;
     private String type;
     private String orderData;
+    private String place;
 
-    public CounterTableReservationDTO(int counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date) {
+    public CounterTableReservationDTO(int counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date,String place) {
         this.counterTableReserveId = counterTableReserveId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.noOfTables = noOfTables;
         this.date = date;
+        this.place=place;
     }
 
 
 
-    public CounterTableReservationDTO(int onlineTableReservationId, Date startTime, Date endTime, String type) {
+    public CounterTableReservationDTO(int onlineTableReservationId, Date startTime, Date endTime, String type,String place) {
         this.counterTableReserveId = onlineTableReservationId;
         this.startTime = (Time) startTime;
         this.endTime = (Time) endTime;
         this.type = type;
+        this.place=place;
     }
 
     public CounterTableReservationDTO(int counterTableReserveId) {
@@ -44,6 +47,14 @@ public class CounterTableReservationDTO {
     public String getType() { return type; }
 
     public void setType(String type) { this.type = type; }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
     public CounterTableReservationDTO() {
     }
