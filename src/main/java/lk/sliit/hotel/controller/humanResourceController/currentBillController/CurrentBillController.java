@@ -2,6 +2,7 @@ package lk.sliit.hotel.controller.humanResourceController.currentBillController;
 
 import lk.sliit.hotel.controller.SuperController;
 import lk.sliit.hotel.dto.hr.CurrentBillDTO;
+import lk.sliit.hotel.service.custom.CurrentBO;
 import lk.sliit.hotel.service.custom.HumanResourceBO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
