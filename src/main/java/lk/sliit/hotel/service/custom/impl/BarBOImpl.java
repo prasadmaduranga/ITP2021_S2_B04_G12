@@ -1,13 +1,13 @@
 package lk.sliit.hotel.service.custom.impl;
 
-import lk.sliit.hotel.dao.beverageDAO.BarOrdersDAO;
-import lk.sliit.hotel.dao.beverageDAO.BarOrdersDetailsDAO;
+import lk.sliit.hotel.dao.barDAO.BarOrdersDAO;
+import lk.sliit.hotel.dao.barDAO.BarOrdersDetailsDAO;
 import lk.sliit.hotel.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotel.dto.bar.BarOrderDTO;
 import lk.sliit.hotel.dto.bar.BarOrderDetailDTO;
 import lk.sliit.hotel.dto.inventory.InventoryDTO;
-import lk.sliit.hotel.entity.barManage.BarOrderDetails;
-import lk.sliit.hotel.entity.barManage.BarOrders;
+import lk.sliit.hotel.entity.bar.BarOrderDetails;
+import lk.sliit.hotel.entity.bar.BarOrders;
 import lk.sliit.hotel.entity.inventory.Inventory;
 import lk.sliit.hotel.service.custom.BarBO;
 import org.springframework.beans.factory.annotation.Autowired;
