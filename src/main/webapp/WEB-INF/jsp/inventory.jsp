@@ -80,7 +80,7 @@
 
         .btnq {
             text-decoration: none;
-            border: 5px solid rgb(174, 182, 203);
+            border: 5px solid rgb(190, 175, 166);
             position: relative;
             overflow: hidden;
             height: 90px;
@@ -101,7 +101,7 @@
             background: linear-gradient(
                     120deg,
                     transparent,
-                    rgba(135, 141, 156, 0.4),
+                    rgba(64, 45, 34, 0.4),
                     transparent
             );
             transition: all .8s;
@@ -301,24 +301,24 @@
                         <div class="x_content">
                             <div class="row">
 
-                                        <a href="inventoryToday">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-dark">
-                                                Today
-                                            </button>
-                                        </a>
-                                        <a href="inventoryTomorrow">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-dark">
-                                                Tomorrow
-                                            </button>
-                                        </a>
-                                        <a href="inventory">
-                                            <button style="float: left;font-weight: bolder"
-                                                    class=" active btn btn-dark">Day After Tomorrow
-                                            </button>
-                                        </a>
+                                <a href="inventoryToday">
+                                    <button style="float: left;font-weight: bolder" class="btn btn-dark">
+                                        Today
+                                    </button>
+                                </a>
+                                <a href="inventoryTomorrow">
+                                    <button style="float: left;font-weight: bolder" class="btn btn-dark">
+                                        Tomorrow
+                                    </button>
+                                </a>
+                                <a href="inventory">
+                                    <button style="float: left;font-weight: bolder"
+                                            class=" active btn btn-dark">Day After Tomorrow
+                                    </button>
+                                </a>
                                 <a style="right: 55px; position:absolute !important;" href="allInventoryNotice" class="img__wrap">
                                     <i style="  font-weight: bolder"
-                                            class="active fa fa-list img__img">
+                                       class="active fa fa-list img__img">
 
                                         <label style=" font-size: 15px" class="img__description">&nbsp;All&nbsp;Notice </label>
                                     </i>
@@ -341,7 +341,7 @@
                                                 <th>Order Holder</th>
                                                 <th>Add Item</th>
                                                 <th>State</th>
-                                             </tr>
+                                            </tr>
 
                                             </thead>
                                             <tbody>
@@ -358,35 +358,35 @@
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
                                                     <td style="width: 20%" >
-                                                            <form action="updateQty" method="post">
-                                                                <div class="input-group" >
-                                                                    <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="inventoryId">
-                                                                    <input style="display: none" value="${Double.parseDouble(e.requiredQty > 0.0 ? e.requiredQty : 0.0) }" type="text" class="form-control" name="currentQty">
-                                                                    <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                    <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="noticeId">
-                                                                    <input style="display: none" value="${e.requiredQty}" type="text" class="form-control" name="checkComplete">
-                                                                    <div class="input-group mb-3">
+                                                        <form action="updateQty" method="post">
+                                                            <div class="input-group" >
+                                                                <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="inventoryId">
+                                                                <input style="display: none" value="${Double.parseDouble(e.requiredQty > 0.0 ? e.requiredQty : 0.0) }" type="text" class="form-control" name="currentQty">
+                                                                <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
+                                                                <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="noticeId">
+                                                                <input style="display: none" value="${e.requiredQty}" type="text" class="form-control" name="checkComplete">
+                                                                <div class="input-group mb-3">
                                                                     <input placeholder="qty" required type="number" class="form-control" name="orderQty">
                                                                     <input placeholder="price" required type="number" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="getPrice">
-                                                                    </div>
-                                                                        <div class="input-group mb-3">
-                                                                        <input placeholder="supplierId" required type="text" class="form-control" name="supplierId">
+                                                                </div>
+                                                                <div class="input-group mb-3">
+                                                                    <input placeholder="supplierId" required type="text" class="form-control" name="supplierId">
 
                                                                     <span class="input-group-btn">
                                                                      <button type="submit" style="font-weight: bolder;
                                                                       background-color: white; color: #b3adad;
                                                                       border: #0f0f0f solid 1px"
                                                                              class="btn">+</button></span>  </div>
-                                                                    </span>
-                                                                </div>
-                                                            </form>
+                                                                </span>
+                                                            </div>
+                                                        </form>
                                                     </td>
                                                     <td>
-                                                      <%--  <c:url value="/inventory" var="url">
-                                                            <c:param name="state" value="${e.state}"/>
-                                                        </c:url> <a href="updateStateDayAfterTomorrow/${e.noticeId }"
-                                                                    class="checkbox">--%>
-                                                              ${1.0 > e.requiredQty ? "Complete" : "InComplete"}
+                                                            <%--  <c:url value="/inventory" var="url">
+                                                                  <c:param name="state" value="${e.state}"/>
+                                                              </c:url> <a href="updateStateDayAfterTomorrow/${e.noticeId }"
+                                                                          class="checkbox">--%>
+                                                            ${1.0 > e.requiredQty ? "Complete" : "InComplete"}
                                                     </td>
                                                 </tr>
                                             </c:forEach>
