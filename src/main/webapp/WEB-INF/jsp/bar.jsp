@@ -122,11 +122,11 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>Baverage
-                            <small>Welcome To Hotel Hareesha</small>
+                            <small>Hotel Sapphire Mariott</small>
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="foodAndBeverage">
+                                <a href="barDashboard">
                                     <button type="button" style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
                                     color: #c6d4d3;font-weight: bolder" class="btnq2 btn">
                                         <i class="fa fa-mail-reply"> Back to Dashboard</i>
