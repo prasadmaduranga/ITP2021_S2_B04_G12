@@ -1,6 +1,7 @@
 package lk.sliit.hotel.controller.houseKeepingController;
 
 import lk.sliit.hotel.controller.SuperController;
+import lk.sliit.hotel.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotel.dto.reservation.CustomerDTO;
 import lk.sliit.hotel.service.custom.HouseKeepingBO;
 import lk.sliit.hotel.service.custom.HumanResourceBO;
