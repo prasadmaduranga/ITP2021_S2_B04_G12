@@ -1,7 +1,11 @@
 package lk.sliit.hotel.entity.inventory;
 
 import lk.sliit.hotel.entity.SuperEntity;
+<<<<<<< HEAD
 import lk.sliit.hotel.entity.barManage.BarOrderDetails;
+=======
+import lk.sliit.hotel.entity.bar.BarOrderDetails;
+>>>>>>> e3dc9d7a08ff1c25d627277fd43686cdcb1e6d21
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

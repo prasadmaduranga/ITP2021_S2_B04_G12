@@ -243,6 +243,7 @@
                                                     <th>Start Time</th>
                                                     <th>End Time</th>
                                                     <th>Type</th>
+                                                    <th>Place</th>
 
                                                 </tr>
 
@@ -254,8 +255,8 @@
                                                         <td>${e.counterTableReserveId}</td>
                                                         <td>${e.startTime}</td>
                                                         <td>${e.endTime}</td>
-
                                                         <td>${e.type}</td>
+                                                        <td>${e.place}</td>
 
                                                     </tr>
                                                 </c:forEach>

@@ -209,8 +209,8 @@
 
                                                             <h5 style="font-size: 20px;margin-top: 100px; background-color: #630000;
                                                             color: white" onclick="myFunction(${e.tableId})" ><span
-                                                                    id="selectedTableId"> &nbsp; ${e.tableId} </span><a
-                                                                    class="button1x">+</a></h5>
+                                                                    id="selectedTableId"> &nbsp; ${e.place} </span><a
+                                                                    class="button1x"></a></h5>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,6 +1,7 @@
 package lk.sliit.hotel.controller.humanResourceController;
 
 import lk.sliit.hotel.controller.SuperController;
+import lk.sliit.hotel.dto.hr.AccountsDTO;
 import lk.sliit.hotel.dto.hr.AttendanceDTO;
 import lk.sliit.hotel.dto.hr.DepartmentDTO;
 import lk.sliit.hotel.dto.hr.SalaryDTO;

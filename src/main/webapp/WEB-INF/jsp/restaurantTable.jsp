@@ -178,6 +178,18 @@
                     </div>
                 </div>
                 <%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <a href="/restaurantTableIndex">
+                            <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -227,6 +239,19 @@
                                                 </div>
                                             </div>
 
+                                            <div>
+                                                <label id="place" name="place" class="label-align"
+                                                >Place: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label><br>
+                                                <div style="word-spacing: 18px;">
+                                                    <input class="radio"
+                                                           type="radio" name="place" value="Indoor"checked><label>Indoor</label>
+
+                                                    <input class="radio"
+                                                           type="radio" name="place" value="Outdoor"><label>Outdoor</label>
+                                                </div>
+                                            </div>
+                                            <br>
 
                                             <div class=" form-group">
                                                 <div class=" ">
@@ -278,7 +303,9 @@
                                                         <th>Id</th>
                                                         <th>Type</th>
                                                         <th>Unit Price</th>
+                                                        <th>place</th>
                                                         <th></th>
+
 
                                                     </tr>
 
@@ -289,6 +316,7 @@
                                                             <td>${item.tableId}</td>
                                                             <td>${item.type}</td>
                                                             <td>${item.unitPrice}</td>
+                                                            <td>${item.place}</td>
                                                             <td><a href="deleteTable/${item.tableId}">
                                                                 <i class="fa fa-trash"></i>
                                                             </a></td>

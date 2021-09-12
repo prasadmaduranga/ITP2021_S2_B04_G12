@@ -145,7 +145,8 @@ public class RestaurantBOImpl implements RestaurantBO {
             dtos.add(new RestaurantTableDTO(
                     a.getTableId(),
                     a.getType(),
-                    a.getUnitPrice()
+                    a.getUnitPrice(),
+                    a.getPlace()
             ));
         }
         return dtos;
@@ -157,7 +158,8 @@ public class RestaurantBOImpl implements RestaurantBO {
         return new RestaurantTableDTO(
                 table.getTableId(),
                 table.getType(),
-                table.getUnitPrice()
+                table.getUnitPrice(),
+                table.getPlace()
         );
     }
 
@@ -178,7 +180,8 @@ public class RestaurantBOImpl implements RestaurantBO {
         restaurantTableDAO.save(new RestaurantTable(
                 restaurantTableDTO.getTableId(),
                 restaurantTableDTO.getType(),
-                restaurantTableDTO.getUnitPrice()));
+                restaurantTableDTO.getUnitPrice(),
+                restaurantTableDTO.getPlace()));
     }
 
     //delete table
@@ -225,7 +228,8 @@ public class RestaurantBOImpl implements RestaurantBO {
                         d2.getCounterTableReserveId(),
                         d2.getStartTime(),
                         d2.getEndTime(),
-                        a.getTableId().getType()
+                        a.getTableId().getType(),
+                        a.getTableId().getPlace()
                 ));
             }
 
@@ -284,7 +288,8 @@ public class RestaurantBOImpl implements RestaurantBO {
             dtoList.add(new RestaurantTableDTO(
                     a.getTableId(),
                     a.getType(),
-                    a.getUnitPrice()
+                    a.getUnitPrice(),
+                    a.getPlace()
             ));
         }
         return dtoList;

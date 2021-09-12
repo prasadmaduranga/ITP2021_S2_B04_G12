@@ -141,6 +141,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+                            <a href="/kitchen">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
+                                    Back</i>
+                                </button>
+                            </a>
+                        </div>
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Kitchen report Print
