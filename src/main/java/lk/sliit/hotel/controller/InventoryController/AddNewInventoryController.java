@@ -6,6 +6,7 @@ import com.hotel.dto.inventory.InventoryNoticeDTO;
 import com.hotel.dto.inventory.ItemTypeDTO;
 import com.hotel.service.custom.IndexLoginBO;
 import com.hotel.service.custom.InventoryBO;
+import lk.sliit.hotel.dto.inventory.ItemTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
