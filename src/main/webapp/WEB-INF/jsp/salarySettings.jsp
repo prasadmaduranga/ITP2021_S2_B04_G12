@@ -270,6 +270,7 @@
 
                             </div>
 
+                            <br><br><br><br>
 
                             <button type='submit' class="btn btn-dark" style="width: 10%; top: 20px; position: relative"
                                     value="Register">
