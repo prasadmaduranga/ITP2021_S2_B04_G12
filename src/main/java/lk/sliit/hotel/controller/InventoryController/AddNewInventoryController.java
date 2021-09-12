@@ -1,12 +1,12 @@
 package lk.sliit.hotel.controller.InventoryController;
 
-import com.hotel.controller.SuperController;
-import com.hotel.dto.inventory.InventoryDTO;
-import com.hotel.dto.inventory.InventoryNoticeDTO;
-import com.hotel.dto.inventory.ItemTypeDTO;
-import com.hotel.service.custom.IndexLoginBO;
-import com.hotel.service.custom.InventoryBO;
+
+import lk.sliit.hotel.controller.SuperController;
+import lk.sliit.hotel.dto.inventory.InventoryDTO;
+import lk.sliit.hotel.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotel.dto.inventory.ItemTypeDTO;
+import lk.sliit.hotel.service.custom.IndexLoginBO;
+import lk.sliit.hotel.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

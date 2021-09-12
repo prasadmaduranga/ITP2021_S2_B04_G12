@@ -1,4 +1,4 @@
-package lk.sliit.hotelManagement.dao.inventoryDAO;
+package lk.sliit.hotel.dao.inventoryDAO;
 
 import lk.sliit.hotelManagement.dto.inventory.InventoryOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
