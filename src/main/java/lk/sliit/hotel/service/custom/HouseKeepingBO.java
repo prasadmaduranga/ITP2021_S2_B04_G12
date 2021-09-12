@@ -2,6 +2,7 @@ package lk.sliit.hotel.service.custom;
 
 import lk.sliit.hotel.dto.houseKeeping.GetDateHouseKeepingDTO;
 import lk.sliit.hotel.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotel.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotel.dto.reservation.CustomerDTO;
 import lk.sliit.hotel.dto.reservation.ReservationDTO;
 import lk.sliit.hotel.service.SuperBO;
