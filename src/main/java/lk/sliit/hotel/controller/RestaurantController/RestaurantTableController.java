@@ -2,6 +2,7 @@ package lk.sliit.hotel.controller.RestaurantController;
 
 import lk.sliit.hotel.controller.SuperController;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
 import lk.sliit.hotel.service.custom.RestaurantBO;
@@ -29,6 +30,7 @@ public class RestaurantTableController {
     @Autowired
     RestaurantBO restaurantBO;
 
+    String alertMsg=null;
 
     //get all tables
     @GetMapping("/restaurantTable")
@@ -141,4 +143,67 @@ public class RestaurantTableController {
         }
         return "redirect:/restaurantTableReservation";
     }
+
+    //load resTabManage.jsp to control the state of the reserving
+    @GetMapping("/tableManage")
+    public String restaurantTableIndexk(Model model) {
+        model = gettableModel(model);
+        return "restaurantTableManage";
+    }
+
+    //create model to store reservation details
+    public Model gettableModel(Model model) {
+        List<ResTableReservationDTO> counterOrders =restaurantBO.getCounterTableReservationByDate(new java.util.Date());
+        // List<ResTableReservationDTO> couterOrders = kitchenBO.getCounterRestaurantFoodOrdersByDate(new java.util.Date());
+
+        //set order table data
+        //model.addAttribute("onlineOrders", onlineOrders);
+        // model.addAttribute("pendingOnline", onlineOrders.size());
+        model.addAttribute("counterOrders",counterOrders );
+        model.addAttribute("pendingCounter", counterOrders.size());
+        // model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+//        if (onlineOrders.size() == 0 && couterOrders.size() == 0){
+//            alertMsg = "Pending restaurant order list is empty";
+//            model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+//            alertMsg = null;
+//        }
+//
+        return model;
+    }
+
+    //when click button type input this method will execute
+    @PostMapping("/confirmTable")
+    public String confirmOrder(Model model, @ModelAttribute ResTableReservationDTO orderDTO) {
+
+        // model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        //check button
+        if (orderDTO.getButton().equals(TableUtil.accept)){
+            //check state
+            if (orderDTO.getState().equals(TableUtil.pendingState)) {
+                //take order
+                if (!restaurantBO.taketableRese(orderDTO)) {
+                    alertMsg = "Reservation is already released";
+                }
+            }
+        } else if (orderDTO.getButton().equals(TableUtil.confirm)){
+            restaurantBO.confirmtableRese(orderDTO);
+            alertMsg = "Reservation id: "+orderDTO.getReseId()+" Released";
+
+        } else if (!orderDTO.getButton().equals(TableUtil.confirm)
+                && !orderDTO.getButton().equals(TableUtil.accept)){
+            alertMsg = "Please select the first reservation.";
+        }
+
+        model = gettableModel(model);
+
+        if (alertMsg != null){
+            model.addAttribute(TableUtil.alertMessageName, alertMsg);
+        }
+
+        return "restaurantTableManage";
+    }
+
+
 }

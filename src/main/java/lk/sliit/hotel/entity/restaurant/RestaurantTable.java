@@ -25,11 +25,13 @@ public class RestaurantTable {
         this.type = type;
     }
 
-    public RestaurantTable(int tableId, String type, double unitPrice, String place) {
+    public RestaurantTable(int tableId, String type,  String place) {
         this.tableId = tableId;
         this.type = type;
         this.place = place;
     }
+
+
 
     public String getPlace() {
         return place;

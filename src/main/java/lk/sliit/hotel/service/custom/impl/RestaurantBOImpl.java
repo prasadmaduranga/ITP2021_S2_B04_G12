@@ -1,5 +1,6 @@
 package lk.sliit.hotel.service.custom.impl;
 
+import lk.sliit.hotel.controller.RestaurantController.TableUtil;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotel.dao.retaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
@@ -11,6 +12,8 @@ import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDetailsDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotel.entity.kitchen.FoodItem;
 import lk.sliit.hotel.entity.restaurant.RestaurantTable;
@@ -145,7 +148,6 @@ public class RestaurantBOImpl implements RestaurantBO {
             dtos.add(new RestaurantTableDTO(
                     a.getTableId(),
                     a.getType(),
-                    a.getUnitPrice(),
                     a.getPlace()
             ));
         }
@@ -158,7 +160,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         return new RestaurantTableDTO(
                 table.getTableId(),
                 table.getType(),
-                table.getUnitPrice(),
                 table.getPlace()
         );
     }
@@ -180,7 +181,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         restaurantTableDAO.save(new RestaurantTable(
                 restaurantTableDTO.getTableId(),
                 restaurantTableDTO.getType(),
-                restaurantTableDTO.getUnitPrice(),
                 restaurantTableDTO.getPlace()));
     }
 
@@ -288,7 +288,6 @@ public class RestaurantBOImpl implements RestaurantBO {
             dtoList.add(new RestaurantTableDTO(
                     a.getTableId(),
                     a.getType(),
-                    a.getUnitPrice(),
                     a.getPlace()
             ));
         }
@@ -344,6 +343,135 @@ public class RestaurantBOImpl implements RestaurantBO {
             ));
 
         }
+    }
+
+
+    //manage table reserving state
+    @Override
+    public List<ResTableReservationDTO> getCounterTableReservationByDate(Date date) {
+        List<ResTableReservationDTO> returnList = new ArrayList<>();
+        List<ResTableDTO> tableDTOS;
+        Iterable<CounterTableReservation> counterOrders;
+        int index = 0;
+        //get counter orders
+        try {
+            counterOrders = counterTableReservationDAO.findAll();
+
+            for (CounterTableReservation item : counterOrders) {
+
+                java.util.Date comp = item.getDate();
+                if (date.getYear() == comp.getYear()
+                        && date.getMonth() == comp.getMonth()
+                        && date.getDate() == comp.getDate()) {
+                    if (item.getTableState()== null
+                            || item.getTableState().equals(TableUtil.processingState)) {
+                        //set state and button
+                        String button = TableUtil.processingState;
+
+                        if (index == 0) {
+                            button = TableUtil.confirm;
+                        }
+
+                        if (item.getTableState() == null) {
+                            item.setTableState(TableUtil.processingState);
+                        }
+
+                        if (item.getTableState().equals(TableUtil.processingState)) {
+                            button = TableUtil.confirm;
+                        }
+
+
+                        Iterable<CounterTableReservationDetails> counterOrderDetails = counterTableReservationDetailsDAO.findAllByCounterTableReservationEquals(item);
+
+                        //create table item list
+                        tableDTOS = new ArrayList<>();
+
+                        for (CounterTableReservationDetails detail : counterOrderDetails) {
+                            //set table items list
+                            tableDTOS.add(new ResTableDTO(
+                                    detail.getTableId().getTableId(),
+                                    item.getCounterTableReserveId(),
+                                    detail.getQuantity(),
+                                    detail.getUnitePrice()
+                            ));
+                        }
+
+                        //complete restaurant table reservations
+                        returnList.add(new ResTableReservationDTO(
+                                item.getCounterTableReserveId(),
+                                TableUtil.counterType,
+                                item.getTableState(),
+                                button,
+                                tableDTOS,
+                                index
+                        ));
+
+                        index++;
+
+                    }
+
+                }
+
+            }
+        } catch (NullPointerException e) {
+
+        }
+
+        return returnList;
+    }
+
+
+
+
+    //manage the table reservation state
+    @Override
+    public boolean taketableRese(ResTableReservationDTO order) {
+        //check order type
+//        if (order.getType().equals(KitchenUtil.onlineType)) {
+//            RestaurantOnlineOrder onlineOrder = onlineOrderDAO.findOne(order.getOrderId());
+//
+//            //check state
+//            if (!onlineOrder.getOrderState().equals(KitchenUtil.canceledState)
+//                    || !onlineOrder.getOrderState().equals(KitchenUtil.finishedState)) {
+//                onlineOrder.setOrderState(KitchenUtil.processingState);
+//                onlineOrderDAO.save(onlineOrder);
+//                return true;
+//            }
+
+        if (order.getType().equals(TableUtil.counterType)) {
+            CounterTableReservation counterOrder = counterTableReservationDAO.findOne(order.getReseId());
+
+            //check state
+            if (!counterOrder.getTableState().equals(TableUtil.canceledState)
+                    || !counterOrder.getTableState().equals(TableUtil.finishedState)) {
+                counterOrder.setTableState(TableUtil.processingState);
+                counterTableReservationDAO.save(counterOrder);
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    //manage released state
+    @Override
+    public void confirmtableRese(ResTableReservationDTO orderDTO) {
+//        if (orderDTO.getType().equals(KitchenUtil.onlineType)) {
+//            RestaurantOnlineOrder onlineOrder = onlineOrderDAO.findOne(orderDTO.getOrderId());
+//            onlineOrder.setOrderState(KitchenUtil.finishedState);
+//            onlineOrderDAO.save(onlineOrder);
+
+        if (orderDTO.getType().equals(TableUtil.counterType)) {
+            CounterTableReservation counterOrder = counterTableReservationDAO.findOne(orderDTO.getReseId());
+            counterOrder.setTableState(TableUtil.finishedState);
+            counterTableReservationDAO.save(counterOrder);
+        }
+
+
+    }
+
     }
 
 

@@ -208,6 +208,14 @@
                         </a>
                     </div>
 
+                    <div class="col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                        <a href="tableManage">
+                            <button type="button" class="large-btn btn btn-dark">Table Manage</button>
+                        </a>
+                    </div>
+
+
+
 
 
                 </div>

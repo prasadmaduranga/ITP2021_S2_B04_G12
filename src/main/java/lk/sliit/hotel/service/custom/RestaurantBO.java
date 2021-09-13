@@ -3,6 +3,7 @@ package lk.sliit.hotel.service.custom;
 import lk.sliit.hotel.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 //import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 //import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
@@ -60,5 +61,14 @@ public interface RestaurantBO {
 //
 //    List<RestaurantOnlineOrderDTO> findOrderOnline();
 //
+
+
+
+
+    List<ResTableReservationDTO> getCounterTableReservationByDate(Date date);
+
+    boolean taketableRese(ResTableReservationDTO order);
+
+    void confirmtableRese(ResTableReservationDTO orderDTO);
 
 }
