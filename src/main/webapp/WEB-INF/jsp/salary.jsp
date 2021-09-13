@@ -111,7 +111,7 @@
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <a href="/allSalary">
-                                <button type='submit' class="btn btn-secondary" style="width: 100%;float: right"
+                                <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
                                         value="Register">
                                     List All salary
                                 </button>
@@ -145,12 +145,9 @@
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
                                         <a href="/hr">
-                                            <button style=" border: 3px solid #4c2a18;  background-color: #8c6f60;
-                                                color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                                            <button style=" border: 2px solid #775e51;  background-color: #8c6f60; width:100%; height:89%;
+                                                color: #E9EDEF;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
                                                 Back</i>
-<%--                                            <button class="btn btn-secondary" style="width:100%; height:89%" type="button"><i--%>
-<%--                                                    class="fa fa-reply">--%>
-<%--                                                Back</i>--%>
                                             </button>
                                         </a>
                                     </ul>

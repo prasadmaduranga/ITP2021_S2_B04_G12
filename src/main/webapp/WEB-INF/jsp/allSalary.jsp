@@ -175,13 +175,9 @@
                                 </h2>
                                 <div class="col-md-2 col-sm-2">
                                 <a href="salary">
-<%--                                    <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"--%>
-<%--                                            value="Register">--%>
-<%--                                       <i class="fa fa-reply"></i> Back--%>
-<%--                                    </button>--%>
-                                <button style=" border: 3px solid #4c2a18;  background-color: #8c6f60;
-                                    color: #c6d4d3;font-weight: bolder" type="submit"  class="btn btn-secondary" value="Register"><i class="fa fa-reply">
-                                 Back</i>
+                                        <button style=" border: 2px solid #775e51;  background-color: #8c6f60; width:50%; float: right;
+                                        color: #E9EDEF;font-weight: bolder" type="submit"  class="btn btn-secondary" value="Register"><i class="fa fa-reply">
+                                            Back</i>
                                 </button>
 
                                 </a>
@@ -255,7 +251,7 @@
         <!-- footer content -->
 <%--        <footer>--%>
 <%--            <div class="pull-right">--%>
-<%--                Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka--%>
+<%--                Copyright © Employee Management 2020.<a href="">--%>
 <%--                Mullevidana</a>--%>
 <%--            </div>--%>
 <%--            <div class="clearfix"></div>--%>

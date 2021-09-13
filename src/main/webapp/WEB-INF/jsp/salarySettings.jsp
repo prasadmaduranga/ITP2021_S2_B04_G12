@@ -169,13 +169,9 @@
                     </div>
                 </div>
                 <a href="/salary">
-<%--                    <button class="btn btn-secondary" style="width:8%; height:5%" type="button"><i--%>
-<%--                            class="fa fa-reply">--%>
-<%--                        Back</i>--%>
-                    <button style=" border: 1px solid #4c2a18;  background-color: #8c6f60;
-                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                        <button style=" border: 2px solid #775e51;  background-color: #8c6f60; width:8%; height:5%;
+                              color: #E9EDEF;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
                             Back</i>
-                    </button>
                 </a>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <%--Table--%>
@@ -270,7 +266,6 @@
 
                             </div>
 
-                            <br><br><br><br>
 
                             <button type='submit' class="btn btn-dark" style="width: 10%; top: 20px; position: relative"
                                     value="Register">
