@@ -194,7 +194,7 @@
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <a href="/banquets">
+                            <a href="/banquet">
                                 <button style=" border: 3px solid #4c2a18;  background-color: #8c6f60;
                                     color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
                                     Back</i>
@@ -305,7 +305,7 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="orderId">Customer Id</label>
-                                <input type="number" value="${topCustomerId}" class="form-control"
+                                <input type="number" value="${topBanquetCustomerId}" class="form-control"
                                        required="required" name="customerId"
                                        id="customerId" placeholder="Customer Id" readonly/></div>
                         </div>

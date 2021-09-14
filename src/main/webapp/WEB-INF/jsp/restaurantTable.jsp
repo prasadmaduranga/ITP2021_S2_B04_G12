@@ -229,15 +229,6 @@
                                                     <option>12 person</option>
                                                 </select>
                                             </div>
-                                            <div class=" form-group">
-                                                <label class="label-align"
-                                                       for="unitPrice">Unit Price: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
-                                                </label>
-                                                <div class="">
-                                                    <input class="form-control" id="unitPrice" name="unitPrice"
-                                                           required="required" type="number">
-                                                </div>
-                                            </div>
 
                                             <div>
                                                 <label id="place" name="place" class="label-align"
@@ -302,7 +293,6 @@
                                                     <tr>
                                                         <th>Id</th>
                                                         <th>Type</th>
-                                                        <th>Unit Price</th>
                                                         <th>place</th>
                                                         <th></th>
 
@@ -315,7 +305,6 @@
                                                         <tr>
                                                             <td>${item.tableId}</td>
                                                             <td>${item.type}</td>
-                                                            <td>${item.unitPrice}</td>
                                                             <td>${item.place}</td>
                                                             <td><a href="deleteTable/${item.tableId}">
                                                                 <i class="fa fa-trash"></i>

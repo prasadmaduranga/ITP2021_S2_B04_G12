@@ -74,7 +74,7 @@
 
         .btnq {
             text-decoration: none;
-            border: 5px solid rgb(174, 182, 203);
+            border: 5px solid rgb(190, 175, 166);
             position: relative;
             overflow: hidden;
             height: 90px;
@@ -219,7 +219,7 @@
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color: #3d495f; color: #ffffff;font-weight: bolder"
+                             background-color: #a98e77; color: #ffffff;font-weight: bolder"
                                href="manageRooms" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Rooms</h2></a>
@@ -231,7 +231,7 @@
 
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                             background-color:#a98e77; color: #ffffff;font-weight: bolder"
                                href="laundryOrder" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Laundry</h2></a>
@@ -242,7 +242,7 @@
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                             background-color:#a98e77; color: #ffffff;font-weight: bolder"
                                href="/houseKeepingReport" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Income</h2></a>
@@ -255,7 +255,7 @@
 
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                             background-color:#a98e77; color: #ffffff;font-weight: bolder"
                                href="/roomService" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Room Service</h2></a>

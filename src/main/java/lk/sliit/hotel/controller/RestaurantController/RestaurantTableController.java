@@ -2,6 +2,8 @@ package lk.sliit.hotel.controller.RestaurantController;
 
 import lk.sliit.hotel.controller.SuperController;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
 import lk.sliit.hotel.service.custom.RestaurantBO;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,6 +32,7 @@ public class RestaurantTableController {
     @Autowired
     RestaurantBO restaurantBO;
 
+    String alertMsg=null;
 
     //get all tables
     @GetMapping("/restaurantTable")
@@ -141,4 +145,190 @@ public class RestaurantTableController {
         }
         return "redirect:/restaurantTableReservation";
     }
+
+    //load resTabManage.jsp to control the state of the reserving
+    @GetMapping("/tableManage")
+    public String restaurantTableIndexk(Model model) {
+        model = gettableModel(model);
+        return "restaurantTableManage";
+    }
+
+    //create model to store reservation details
+    public Model gettableModel(Model model) {
+        List<ResTableReservationDTO> counterOrders =restaurantBO.getCounterTableReservationByDate(new java.util.Date());
+        // List<ResTableReservationDTO> couterOrders = kitchenBO.getCounterRestaurantFoodOrdersByDate(new java.util.Date());
+
+        //set order table data
+        //model.addAttribute("onlineOrders", onlineOrders);
+        // model.addAttribute("pendingOnline", onlineOrders.size());
+        model.addAttribute("counterOrders",counterOrders );
+        model.addAttribute("pendingCounter", counterOrders.size());
+        // model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+//        if (onlineOrders.size() == 0 && couterOrders.size() == 0){
+//            alertMsg = "Pending restaurant order list is empty";
+//            model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+//            alertMsg = null;
+//        }
+//
+        return model;
+    }
+
+    //when click button type input this method will execute
+    @PostMapping("/confirmTable")
+    public String confirmOrder(Model model, @ModelAttribute ResTableReservationDTO orderDTO) {
+
+        // model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        //check button
+        if (orderDTO.getButton().equals(TableUtil.accept)){
+            //check state
+            if (orderDTO.getState().equals(TableUtil.pendingState)) {
+                //take order
+                if (!restaurantBO.taketableRese(orderDTO)) {
+                    alertMsg = "Reservation is already released";
+                }
+            }
+        } else if (orderDTO.getButton().equals(TableUtil.confirm)){
+            restaurantBO.confirmtableRese(orderDTO);
+            alertMsg = "Reservation id: "+orderDTO.getReseId()+" Released";
+
+        } else if (!orderDTO.getButton().equals(TableUtil.confirm)
+                && !orderDTO.getButton().equals(TableUtil.accept)){
+            alertMsg = "Please select the first reservation.";
+        }
+
+        model = gettableModel(model);
+
+        if (alertMsg != null){
+            model.addAttribute(TableUtil.alertMessageName, alertMsg);
+        }
+
+        return "restaurantTableManage";
+    }
+
+    //restaurant table reservation report
+    @GetMapping("/RestaurantReport")
+    public String loadKitchenReport(Model model) {
+        alertMsg = null;
+        model.addAttribute("alert", alertMsg);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<ResTableReservationDTO> allFinishedOrders = restaurantBO.findReportData(new java.util.Date());
+        List<ResTableDTO> onlineItems = new ArrayList<>();
+        List<ResTableDTO> counterItems = new ArrayList<>();
+        List<ResTableDTO> finalList = new ArrayList<>();
+
+        //model variables for calculations
+        int totaltableItemsSold = 0;
+        int totalOnlinetableItemsSold = 0;
+        int totalCountertableItemsSold = 0;
+        double totalOnlinetableIncome = 0;
+        double totalCountertableIncome = 0;
+        double totalIncome = 0;
+
+        if (!allFinishedOrders.isEmpty()){
+            for (ResTableReservationDTO order: allFinishedOrders){
+
+                System.out.println("======================================================\n\n");
+                System.out.println(order.getType()+"\n");
+                for (ResTableDTO item: order.getTables()){
+                    System.out.println("ID: "+item.getTableId());
+                    //System.out.println("Name: "+item.getFoodName());
+                    System.out.println("Quantity: "+item.getQuantity());
+                    System.out.println("Price"+item.getPrice());
+                    System.out.println("Total price: "+item.getTotalPrice());
+
+                }
+
+                System.out.println("======================================================\n\n");
+
+
+                //////////////////////////////////////////////
+
+
+//                if (order.getType().equals(KitchenUtil.counterType)){
+//
+//                    onlineItems = order.getTables();
+//
+//                    //calc total item sold
+//                    if (!onlineItems.isEmpty()){
+//
+//                        for (RestaurantFoodItemDTO itemDTO : onlineItems){
+//                            totalOnlineItemsSold += itemDTO.getQuantity();
+//                            totalOnlineIncome += itemDTO.getTotalPrice();
+//                        }
+//
+//                        //set selling rates
+//                        for (RestaurantFoodItemDTO itemDTO : onlineItems){
+//                            itemDTO.setSellingRateOnline(Math.round(((itemDTO.getQuantity() / totalOnlineItemsSold) * 100)));
+//                        }
+//
+//                    }
+//
+
+                if (order.getType().equals(TableUtil.counterType)){
+
+                    counterItems = order.getTables();
+
+                    //calc total item sold
+                    if (!counterItems.isEmpty()){
+
+                        for (ResTableDTO itemDTO : counterItems){
+                            totalCountertableItemsSold += itemDTO.getQuantity();
+                            totalCountertableIncome += itemDTO.getTotalPrice();
+                        }
+
+                        //set selling rates
+                        for (ResTableDTO itemDTO : counterItems){
+                            itemDTO.setSellingRateCounter(Math.round((itemDTO.getQuantity() / totalCountertableItemsSold) * 100));
+                        }
+                    }
+                }
+            }
+
+            totalIncome = totalCountertableIncome + totalOnlinetableIncome;
+            totaltableItemsSold = totalCountertableItemsSold + totalOnlinetableItemsSold;
+
+            if (!onlineItems.isEmpty()){
+                finalList.addAll(onlineItems);
+
+                if (!counterItems.isEmpty()){
+                    for (ResTableDTO counterItem: counterItems){
+                        for (ResTableDTO list:finalList){
+                            if (counterItem.getTableId() == list.getTableId()){
+                                list.setSellingRateCounter(counterItem.getSellingRateCounter());
+                                list.setQuantity(list.getQuantity() + counterItem.getQuantity());
+                            }
+                        }
+                    }
+                } else {
+                    for (ResTableDTO itemDTO:finalList){
+                        itemDTO.setSellingRateCounter(0);
+                    }
+                }
+            } else {
+                finalList.addAll(counterItems);
+
+                for (ResTableDTO itemDTO:finalList){
+                    itemDTO.setSellingRateOnline(0);
+                }
+            }
+
+        }
+
+
+
+        model.addAttribute("table", finalList);
+        model.addAttribute("totaltableItemsSold",totaltableItemsSold);
+        model.addAttribute("totaltableOnline", totalOnlinetableItemsSold);
+        model.addAttribute("totaltableCounter", totalCountertableItemsSold);
+        model.addAttribute("totalCountertableIncome", totalCountertableIncome);
+        model.addAttribute("totalOnlinetableIncome", totalOnlinetableIncome);
+        model.addAttribute("totalIncome", totalIncome);
+
+        return "restaurantTableResReport";
+    }
+
+
 }

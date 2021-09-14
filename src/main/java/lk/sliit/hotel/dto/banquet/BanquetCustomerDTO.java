@@ -2,38 +2,24 @@ package lk.sliit.hotel.dto.banquet;
 
 public class BanquetCustomerDTO {
 
-    private int banquetCustomerId;
-    private String email;
+    private  int customerId;
     private String name;
+    private String email;
     private String address;
-    private String contactNumber;
+    private String contactNo;
+    private String userName;
+    private String password;
 
-    public BanquetCustomerDTO(int customerId){
-
+    public BanquetCustomerDTO(int customerId) {
+        this.customerId = customerId;
     }
 
-    public BanquetCustomerDTO(int banquetCustomerId, String email, String name, String address, String contactNumber) {
-        this.banquetCustomerId = banquetCustomerId;
-        this.email = email;
-        this.name = name;
-        this.address = address;
-        this.contactNumber = contactNumber;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public int getBanquetCustomerId() {
-        return banquetCustomerId;
-    }
-
-    public void setBanquetCustomerId(int banquetCustomerId) {
-        this.banquetCustomerId = banquetCustomerId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -44,6 +30,14 @@ public class BanquetCustomerDTO {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -52,22 +46,41 @@ public class BanquetCustomerDTO {
         this.address = address;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getContactNo() {
+        return contactNo;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     @Override
     public String toString() {
         return "BanquetCustomerDTO{" +
-                "banquetCustomerId=" + banquetCustomerId +
-                ", email='" + email + '\'' +
+                "customerId=" + customerId +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

@@ -4,7 +4,6 @@ import lk.sliit.hotel.controller.kitchenController.KitchenUtil;
 import lk.sliit.hotel.dao.banquetDAO.BanquetAddDAO;
 import lk.sliit.hotel.dao.banquetDAO.LimitDAO;
 import lk.sliit.hotel.dao.inventoryDAO.InventoryDAO;
-import lk.sliit.hotel.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenFoodOrderDAO;
 import lk.sliit.hotel.dao.kitchenDAO.MenuDetailsDAO;
@@ -12,6 +11,8 @@ import lk.sliit.hotel.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDA
 import lk.sliit.hotel.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotel.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotel.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
+import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
+import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotel.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotel.dto.banquet.LimitDTO;
 import lk.sliit.hotel.dto.inventory.InventoryDTO;

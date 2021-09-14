@@ -32,16 +32,16 @@ public class barDashboard {
         return "barDashboard";
     }
 
-//    @GetMapping("/beverageDailyActivityReport")
-//    public String barDailyReport(Model model) {
-//        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-//
-//
-//        return "beverageDailyActivityReport";
-//    }
-//    @GetMapping("/restaurantDailyActivityReport")
-//    public String restaurantReport(Model model) {
-//        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-//        return "restaurantDailyActivityReport";
-//    }
+    @GetMapping("/beverageDailyActivityReport")
+    public String barDailyReport(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+
+        return "beverageDailyActivityReport";
+    }
+    @GetMapping("/restaurantDailyActivityReport")
+    public String restaurantReport(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantDailyActivityReport";
+    }
 }

@@ -11,23 +11,14 @@ public class BanquetOrderDTO {
     private int noOfPlates;
     private Date date;
     private String submittedBy;
-
-    public BanquetOrderDTO(){
-    }
-
-    public BanquetOrderDTO(int orderId, String hallId, String orderState,
-                           int noOfPlates, Date date, String submittedBy) {
-        this.orderId = orderId;
-        this.hallId = hallId;
-        this.orderState = orderState;
-        this.noOfPlates = noOfPlates;
-        this.date = date;
-        this.submittedBy = submittedBy;
-    }
+    private String customerId;
+    private String menuId;
+    private int banquetBillId;
 
     public BanquetOrderDTO(int orderId) {
-        this.orderId = orderId;
+        this.orderId= orderId;
     }
+
 
     public int getOrderId() {
         return orderId;
@@ -37,7 +28,9 @@ public class BanquetOrderDTO {
         this.orderId = orderId;
     }
 
-    public String getHallId() { return hallId; }
+    public String getHallId() {
+        return hallId;
+    }
 
     public void setHallId(String hallId) {
         this.hallId = hallId;
@@ -75,16 +68,42 @@ public class BanquetOrderDTO {
         this.submittedBy = submittedBy;
     }
 
-    @Override
-    public String toString(){
-        return "BanquetOrderDTO {" +
-                "Order_Id ='"+ orderId + '\'' +
-                ",Hall_Id ='"+ hallId  + '\''+
-                ",OderState ='"+orderState+ '\''+
-                ",No_Of_Plates= '"+noOfPlates+ '\''+
-                ", date=" + date +
-                ", submittedBy='" + submittedBy + '\'' +
-                '}';
+    public String getCustomerId() {
+        return customerId;
     }
 
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getBanquetBillId() {
+        return banquetBillId;
+    }
+
+    public void setBanquetBillId(int banquetBillId) {
+        this.banquetBillId = banquetBillId;
+    }
+
+    public String getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
+    }
+
+    @Override
+    public String toString() {
+        return "BanquetOrderDTO{" +
+                "orderId=" + orderId +
+                ", hallId='" + hallId + '\'' +
+                ", orderState='" + orderState + '\'' +
+                ", noOfPlates=" + noOfPlates +
+                ", date=" + date +
+                ", submittedBy='" + submittedBy + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", menuId='" + menuId + '\'' +
+                ", banquetBillId=" + banquetBillId +
+                '}';
+    }
 }

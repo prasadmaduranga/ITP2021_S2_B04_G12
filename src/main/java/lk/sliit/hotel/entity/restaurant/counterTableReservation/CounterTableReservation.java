@@ -17,6 +17,7 @@ public class CounterTableReservation {
     private Time endTime;
     private int noOfTables;
     private Date date;
+    private String tableState;
 
     @OneToMany(mappedBy = "counterTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<CounterTableReservationDetails> orderDetails = new ArrayList<>();
@@ -83,5 +84,11 @@ public class CounterTableReservation {
         this.orderDetails = orderDetails;
     }
 
+    public String getTableState() {
+        return tableState;
+    }
 
+    public void setTableState(String tableState) {
+        this.tableState = tableState;
+    }
 }

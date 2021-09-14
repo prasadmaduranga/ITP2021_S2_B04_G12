@@ -18,4 +18,5 @@ public interface CounterTableReservationDAO extends CrudRepository<CounterTableR
     CounterTableReservation findTopByOrderByCounterTableReserveIdDesc();
 
 
+    Iterable<CounterTableReservation> findAllByTableStateEquals(String State);
 }
