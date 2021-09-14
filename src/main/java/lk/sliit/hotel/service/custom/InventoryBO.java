@@ -1,8 +1,7 @@
-package lk.sliit.hotelManagement.service.custom;
+package lk.sliit.hotel.service.custom;
 
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.hotelManagement.dto.inventory.*;
-import lk.sliit.hotelManagement.service.SuperBO;
+import lk.sliit.hotel.dto.inventory.*;
+import lk.sliit.hotel.service.SuperBO;
 
 import java.util.List;
 

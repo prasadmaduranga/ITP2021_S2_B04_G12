@@ -5,7 +5,6 @@ import lk.sliit.hotel.dto.inventory.GetDateInventoryDTO;
 import lk.sliit.hotel.dto.inventory.InventoryOrderDTO;
 import lk.sliit.hotel.service.custom.HumanResourceBO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
-import lk.sliit.hotel.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
