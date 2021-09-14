@@ -1,6 +1,7 @@
 package lk.sliit.hotel.service.custom.impl;
 
 import lk.sliit.hotel.controller.RestaurantController.TableUtil;
+import lk.sliit.hotel.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotel.dao.retaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
@@ -36,8 +37,7 @@ import java.util.List;
 @Service
 @Transactional
 public class RestaurantBOImpl implements RestaurantBO {
-    //    @Autowired
-    //    InventoryDAO inventoryDAO;
+
     @Autowired
     KitchenDAO foodItem;
     @Autowired
@@ -58,7 +58,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 //    @Autowired
 //    OnlineTableReservationDAO onlineTableReservationDAO;
 
-/*---------------counter order---------------*/
+/*------------------------------------------------------------counter order------------------------------------------------*/
     //find highest id to save
     @Override
     public RestaurantCounterOrderDTO findTopByOrderByRestIdDesc() {
@@ -138,7 +138,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         return dtos;
     }
 
-    /*-------------------counter table reservation---------------------------*/
+    /*-------------------------------------------------counter table reservation----------------------------------------------*/
     //get list of tables
     @Override
     public List<RestaurantTableDTO> findAllTable() {
@@ -472,7 +472,85 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     }
 
+    //table report
+    @Override
+    public List<ResTableReservationDTO> findReportData(Date date) {
+        List<ResTableReservationDTO> returnlist = new ArrayList<>();
+        List<ResTableDTO> tableDTOS, selectedtableList;
+        ResTableReservationDTO order;
+
+        try {
+            Iterable<CounterTableReservation> coubterOrders = counterTableReservationDAO.findAllByTableStateEquals(TableUtil.finishedState);
+            tableDTOS = new ArrayList<>();
+            selectedtableList = new ArrayList<>();
+
+            for( CounterTableReservation item:coubterOrders){
+
+                java.util.Date comp = item.getDate();
+                if (date.getYear() == comp.getYear()
+                        && date.getMonth() == comp.getMonth()
+                        && date.getDate() == comp.getDate()) {
+
+                    Iterable<CounterTableReservationDetails> details = counterTableReservationDetailsDAO.findAllByCounterTableReservationEquals(item);
+                    for (CounterTableReservationDetails detail : details) {
+
+                        tableDTOS.add(new ResTableDTO(
+                                detail.getTableId().getTableId(),
+                                item.getCounterTableReserveId(),
+                                detail.getQuantity(),
+                                detail.getUnitePrice()
+                        ));
+
+                    }
+
+                }
+            }
+//set table list
+            if (!tableDTOS.isEmpty()){
+
+                while (!tableDTOS.isEmpty()){
+                    //select 1st item
+                    ResTableDTO selectedItem = tableDTOS.remove(0);
+                    List<ResTableDTO> remove = new ArrayList<>();
+
+                    //get total tables info
+                    if (!tableDTOS.isEmpty()){
+
+                        for (ResTableDTO resitem:tableDTOS){
+                            if (selectedItem.getTableId() == resitem.getTableId()){
+                                selectedItem.setQuantity(resitem.getQuantity() + selectedItem.getQuantity());
+                                remove.add(resitem);
+                            }
+                        }
+                    }
+
+
+                    //remove selected item from foodItemDTOS
+                    if (!remove.isEmpty())
+                        tableDTOS.removeAll(remove);
+
+                    selectedtableList.add(selectedItem);
+
+                }
+
+                //set total price
+                for (ResTableDTO tableitem:selectedtableList){
+                    tableitem.setTotalPrice(tableitem.getQuantity() * tableitem.getPrice());
+                }
+            }
+
+            order = new ResTableReservationDTO();
+            order.setTables(selectedtableList);
+            order.setType(TableUtil.counterType);
+            returnlist.add(order);
+
+
+        }catch(NullPointerException e){
+
+        }
+        return returnlist;
     }
 
-
 }
+
+

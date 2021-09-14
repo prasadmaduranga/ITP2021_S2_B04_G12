@@ -71,4 +71,6 @@ public interface RestaurantBO {
 
     void confirmtableRese(ResTableReservationDTO orderDTO);
 
+    List<ResTableReservationDTO> findReportData(Date date);
+
 }

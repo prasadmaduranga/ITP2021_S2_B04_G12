@@ -2,6 +2,7 @@ package lk.sliit.hotel.controller.RestaurantController;
 
 import lk.sliit.hotel.controller.SuperController;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
+import lk.sliit.hotel.dto.restaurant.ResTableDTO;
 import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -203,6 +205,129 @@ public class RestaurantTableController {
         }
 
         return "restaurantTableManage";
+    }
+
+    //restaurant table reservation report
+    @GetMapping("/RestaurantReport")
+    public String loadKitchenReport(Model model) {
+        alertMsg = null;
+        model.addAttribute("alert", alertMsg);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<ResTableReservationDTO> allFinishedOrders = restaurantBO.findReportData(new java.util.Date());
+        List<ResTableDTO> onlineItems = new ArrayList<>();
+        List<ResTableDTO> counterItems = new ArrayList<>();
+        List<ResTableDTO> finalList = new ArrayList<>();
+
+        //model variables for calculations
+        int totaltableItemsSold = 0;
+        int totalOnlinetableItemsSold = 0;
+        int totalCountertableItemsSold = 0;
+        double totalOnlinetableIncome = 0;
+        double totalCountertableIncome = 0;
+        double totalIncome = 0;
+
+        if (!allFinishedOrders.isEmpty()){
+            for (ResTableReservationDTO order: allFinishedOrders){
+
+                System.out.println("======================================================\n\n");
+                System.out.println(order.getType()+"\n");
+                for (ResTableDTO item: order.getTables()){
+                    System.out.println("ID: "+item.getTableId());
+                    //System.out.println("Name: "+item.getFoodName());
+                    System.out.println("Quantity: "+item.getQuantity());
+                    System.out.println("Price"+item.getPrice());
+                    System.out.println("Total price: "+item.getTotalPrice());
+
+                }
+
+                System.out.println("======================================================\n\n");
+
+
+                //////////////////////////////////////////////
+
+
+//                if (order.getType().equals(KitchenUtil.counterType)){
+//
+//                    onlineItems = order.getTables();
+//
+//                    //calc total item sold
+//                    if (!onlineItems.isEmpty()){
+//
+//                        for (RestaurantFoodItemDTO itemDTO : onlineItems){
+//                            totalOnlineItemsSold += itemDTO.getQuantity();
+//                            totalOnlineIncome += itemDTO.getTotalPrice();
+//                        }
+//
+//                        //set selling rates
+//                        for (RestaurantFoodItemDTO itemDTO : onlineItems){
+//                            itemDTO.setSellingRateOnline(Math.round(((itemDTO.getQuantity() / totalOnlineItemsSold) * 100)));
+//                        }
+//
+//                    }
+//
+
+                if (order.getType().equals(TableUtil.counterType)){
+
+                    counterItems = order.getTables();
+
+                    //calc total item sold
+                    if (!counterItems.isEmpty()){
+
+                        for (ResTableDTO itemDTO : counterItems){
+                            totalCountertableItemsSold += itemDTO.getQuantity();
+                            totalCountertableIncome += itemDTO.getTotalPrice();
+                        }
+
+                        //set selling rates
+                        for (ResTableDTO itemDTO : counterItems){
+                            itemDTO.setSellingRateCounter(Math.round((itemDTO.getQuantity() / totalCountertableItemsSold) * 100));
+                        }
+                    }
+                }
+            }
+
+            totalIncome = totalCountertableIncome + totalOnlinetableIncome;
+            totaltableItemsSold = totalCountertableItemsSold + totalOnlinetableItemsSold;
+
+            if (!onlineItems.isEmpty()){
+                finalList.addAll(onlineItems);
+
+                if (!counterItems.isEmpty()){
+                    for (ResTableDTO counterItem: counterItems){
+                        for (ResTableDTO list:finalList){
+                            if (counterItem.getTableId() == list.getTableId()){
+                                list.setSellingRateCounter(counterItem.getSellingRateCounter());
+                                list.setQuantity(list.getQuantity() + counterItem.getQuantity());
+                            }
+                        }
+                    }
+                } else {
+                    for (ResTableDTO itemDTO:finalList){
+                        itemDTO.setSellingRateCounter(0);
+                    }
+                }
+            } else {
+                finalList.addAll(counterItems);
+
+                for (ResTableDTO itemDTO:finalList){
+                    itemDTO.setSellingRateOnline(0);
+                }
+            }
+
+        }
+
+
+
+        model.addAttribute("table", finalList);
+        model.addAttribute("totaltableItemsSold",totaltableItemsSold);
+        model.addAttribute("totaltableOnline", totalOnlinetableItemsSold);
+        model.addAttribute("totaltableCounter", totalCountertableItemsSold);
+        model.addAttribute("totalCountertableIncome", totalCountertableIncome);
+        model.addAttribute("totalOnlinetableIncome", totalOnlinetableIncome);
+        model.addAttribute("totalIncome", totalIncome);
+
+        return "restaurantTableResReport";
     }
 
 
