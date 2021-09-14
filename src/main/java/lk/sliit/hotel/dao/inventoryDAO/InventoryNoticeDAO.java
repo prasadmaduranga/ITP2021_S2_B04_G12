@@ -1,7 +1,7 @@
-package lk.sliit.hotelManagement.dao.inventoryDAO;
+package lk.sliit.hotel.dao.inventoryDAO;
 
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
-import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
+import lk.sliit.hotel.entity.inventory.Inventory;
+import lk.sliit.hotel.entity.inventory.InventoryNotice;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
