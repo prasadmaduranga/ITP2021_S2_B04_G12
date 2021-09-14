@@ -5,6 +5,7 @@ import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
+import lk.sliit.hotel.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 //import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 //import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 //import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
@@ -46,11 +47,13 @@ public interface RestaurantBO {
 
 
 
-//    RestaurantOnlineOrderDTO findHighestOnlineOrderId();
-//
-//    void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
-//
-//
+    RestaurantOnlineOrderDTO findHighestOnlineOrderId();
+
+    void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
+
+    List<RestaurantOnlineOrderDTO> findOrderOnline();
+
+
 
 // OnlineTableReservationDTO findHighestOnlineTableId();
 
@@ -58,9 +61,9 @@ public interface RestaurantBO {
 //
 
 //    List<OnlineTableReservationDTO> findTablesOnline();
-//
-//    List<RestaurantOnlineOrderDTO> findOrderOnline();
-//
+
+
+
 
 
 

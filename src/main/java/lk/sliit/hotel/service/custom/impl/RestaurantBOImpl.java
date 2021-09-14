@@ -3,11 +3,14 @@ package lk.sliit.hotel.service.custom.impl;
 import lk.sliit.hotel.controller.RestaurantController.TableUtil;
 import lk.sliit.hotel.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenDAO;
+import lk.sliit.hotel.dao.retaurantDAO.OnlineCustomerDAO;
 import lk.sliit.hotel.dao.retaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterTableReservationDAO.CounterTableReservationDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterTableReservationDAO.CounterTableReservationDetailsDAO;
+import lk.sliit.hotel.dao.retaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
+import lk.sliit.hotel.dao.retaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotel.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDetailDTO;
@@ -16,12 +19,16 @@ import lk.sliit.hotel.dto.restaurant.CounterTableReservation.CounterTableReserva
 import lk.sliit.hotel.dto.restaurant.ResTableDTO;
 import lk.sliit.hotel.dto.restaurant.ResTableReservationDTO;
 import lk.sliit.hotel.dto.restaurant.RestaurantTableDTO;
+import lk.sliit.hotel.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotel.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotel.entity.kitchen.FoodItem;
 import lk.sliit.hotel.entity.restaurant.RestaurantTable;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotel.entity.restaurant.counterTableReservation.CounterTableReservation;
 import lk.sliit.hotel.entity.restaurant.counterTableReservation.CounterTableReservationDetails;
+import lk.sliit.hotel.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.hotel.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotel.service.custom.RestaurantBO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +51,14 @@ public class RestaurantBOImpl implements RestaurantBO {
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
     RestaurantCounterOrderDetailDAO restaurantCounterOrderDetail;
+
+
+    @Autowired
+    RestaurantOnlineOrderDetailsDAO onlineOrderDetailsDAO;
+    @Autowired
+    RestaurantOnlineOrderDAO onlineOrderDAO;
+    @Autowired
+    OnlineCustomerDAO onlineCustomerDAO;
 
 
     @Autowired
@@ -137,6 +152,90 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
         return dtos;
     }
+
+/*--------------------------------------------------------online order--------------------------------------------------------*/
+
+    //find highest online orderid to save
+    @Override
+    public RestaurantOnlineOrderDTO findHighestOnlineOrderId() {
+        RestaurantOnlineOrder orders = null;
+        try {
+            orders = onlineOrderDAO.findTopByOrderByOrderIdDesc();
+        } catch (Exception e) {
+
+        }
+        return new RestaurantOnlineOrderDTO(
+                orders.getOrderId()
+        );
+    }
+
+    //save online order
+    @Override
+    public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {
+        java.util.List<RestaurantOnlineOrderDetailsDTO> list = new ArrayList<>();
+        String arr = onlineOrderDTO.getOrderData();
+
+        String yo[] = arr.split(" ");
+        int count = 0;
+        RestaurantOnlineOrderDetailsDTO itm = new RestaurantOnlineOrderDetailsDTO();
+        for (String str : yo) {//Read string array
+            if (count == 0) {
+                itm = new RestaurantOnlineOrderDetailsDTO();
+                itm.setFoodItem(Integer.parseInt(str));
+                count++;
+
+            } else if (count == 1) {
+                itm.setUnitePrice(Double.parseDouble(str));
+                count++;
+
+            } else if (count == 2) {
+                itm.setQuantity(Double.parseDouble(str));
+                list.add(itm);
+                count = 0;
+            }
+        }
+        Calendar cal = Calendar.getInstance();//calculate date
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        onlineOrderDTO.setDate(today);
+        onlineOrderDAO.save(new RestaurantOnlineOrder(//Save Order
+                onlineOrderDTO.getOrderId(),
+                onlineOrderDTO.getOrderState(),
+                onlineOrderDTO.getDate(),
+                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
+
+        for (RestaurantOnlineOrderDetailsDTO orderDetail : list) {//Save Order detail
+            onlineOrderDetailsDAO.save(new RestaurantOnlineOrderDetails(
+                    onlineOrderDTO.getOrderId(),
+                    orderDetail.getFoodItem(),
+                    orderDetail.getQuantity(),
+                    orderDetail.getUnitePrice()));
+
+        }
+    }
+
+    //order report
+    @Override
+    public List<RestaurantOnlineOrderDTO> findOrderOnline() {
+        java.util.Date todaydate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt, todaydate);//Find all Date Between(before 1 month)
+        List<RestaurantOnlineOrderDTO> orderDTOList = new ArrayList<>();
+        for (RestaurantOnlineOrder item : all4) {
+            orderDTOList.add(new RestaurantOnlineOrderDTO(
+                    item.getOrderId(),
+                    item.getOrderState(),
+                    item.getDate(),
+                    item.getCustomer().getOnlineCustomerId(),
+                    item.getOrderDetails()
+            ));
+        }
+        return orderDTOList;
+    }
+
+
 
     /*-------------------------------------------------counter table reservation----------------------------------------------*/
     //get list of tables
@@ -344,6 +443,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 
         }
     }
+
 
 
     //manage table reserving state

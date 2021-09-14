@@ -1,0 +1,12 @@
+package lk.sliit.hotel.dao.retaurantDAO.onlineOrderDAO;
+
+import lk.sliit.hotel.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.hotel.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
+import org.springframework.data.repository.CrudRepository;
+
+public interface RestaurantOnlineOrderDetailsDAO extends CrudRepository<RestaurantOnlineOrderDetails,Integer> {
+
+    Iterable<RestaurantOnlineOrderDetails> findAllByRestaurantOnlineOrderEquals(RestaurantOnlineOrder id);
+
+
+}
