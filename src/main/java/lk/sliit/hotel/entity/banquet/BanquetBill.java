@@ -6,22 +6,19 @@ import javax.persistence.Id;
 @Entity
 public class BanquetBill {
     @Id
-    private int billId;
-    private double total;
-    private double foodPrice;
-    private double otherPrice;
-    private double advancePayment;
+    int billId;
+    double advancePayment;
+    double foodPrice;
+    double otherPrice;
+    double total;
 
-
-
-    public BanquetBill(int billId, double total, double foodPrice, double otherPrice, double advancePayment) {
+    public BanquetBill(int billId, double advancePayment, double foodPrice, double otherPrice, double total) {
         this.billId = billId;
-        this.total = total;
+        this.advancePayment = advancePayment;
         this.foodPrice = foodPrice;
         this.otherPrice = otherPrice;
-        this.advancePayment = advancePayment;
+        this.total = total;
     }
-
 
     public BanquetBill() {
 
@@ -35,12 +32,12 @@ public class BanquetBill {
         this.billId = billId;
     }
 
-    public double getTotal() {
-        return total;
+    public double getAdvancePayment() {
+        return advancePayment;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setAdvancePayment(double advancePayment) {
+        this.advancePayment = advancePayment;
     }
 
     public double getFoodPrice() {
@@ -59,11 +56,11 @@ public class BanquetBill {
         this.otherPrice = otherPrice;
     }
 
-    public double getAdvancePayment() {
-        return advancePayment;
+    public double getTotal() {
+        return total;
     }
 
-    public void setAdvancePayment(double advancePayment) {
-        this.advancePayment = advancePayment;
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

@@ -1,7 +1,5 @@
 package lk.sliit.hotel.entity.kitchen;
 
-import lk.sliit.hotel.entity.banquet.BanquetOrder;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
