@@ -31,6 +31,23 @@ public class BanquetAddDTO {
 
     }
 
+    public BanquetAddDTO(int orderId, String name, Date date, int billId, double advancePayment, double foodPrice,
+                        double otherPrices, double total, double unitPrice, int noOfPlates) {
+        this.orderId= orderId;
+        this.name= name;
+        this.date = date;
+        this.banquetBillId= billId;
+        this.advanceFee = advancePayment;
+        this.foodPrice = foodPrice;
+        this.noOfPlates = noOfPlates;
+        this.unitPrise =unitPrice;
+        this.total = total;
+        this.otherPrice = otherPrices;
+
+
+
+    }
+
     public int getOrderId() {
         return orderId;
     }
@@ -199,4 +216,6 @@ public class BanquetAddDTO {
                 '}';
     }
 }
+
+
 

@@ -63,4 +63,9 @@ public class BanquetBill {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public double getOtherPrices() {
+        return otherPrice;
+    }
 }
+
