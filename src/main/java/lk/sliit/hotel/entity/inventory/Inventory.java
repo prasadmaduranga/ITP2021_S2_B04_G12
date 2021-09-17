@@ -1,7 +1,7 @@
 package lk.sliit.hotel.entity.inventory;
 
 import lk.sliit.hotel.entity.SuperEntity;
-import lk.sliit.hotel.entity.barManage.BarOrderDetails;
+//import lk.sliit.hotel.entity.barManage.BarOrderDetails;
 import lk.sliit.hotel.entity.bar.BarOrderDetails;
 
 
