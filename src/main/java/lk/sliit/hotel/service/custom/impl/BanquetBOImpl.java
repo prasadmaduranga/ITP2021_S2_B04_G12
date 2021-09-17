@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
+
 @Service
 @Transactional
 public class BanquetBOImpl implements BanquetBO {
@@ -85,5 +87,29 @@ public class BanquetBOImpl implements BanquetBO {
         ));
 
     }
+
+    //Check date availability
+    @Override
+    public int checkAvailability(Date date) {
+        int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
+        return count;
+    }
+
+    //Check hall 01 availability
+    @Override
+    public int checkHallOneAvailability(Date date) {
+        String hallNo = "No 1";
+        int count1= banquetOrderDAO.countBanquetOrderByDateEqualsAndHallIdEquals(date,hallNo);
+        return count1;
+    }
+
+    //Check hall 02 available
+    @Override
+    public int checkHallTwoAvailabilityCheck(Date date) {
+        String hallNo= "No 2";
+        int count2 = banquetOrderDAO.countBanquetOrderByDateEqualsAndHallIdEquals(date, hallNo);
+        return count2;
+    }
+
 
 }
