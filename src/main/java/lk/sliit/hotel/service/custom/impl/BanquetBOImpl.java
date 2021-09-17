@@ -25,8 +25,8 @@ public class BanquetBOImpl implements BanquetBO {
     @Autowired
     BanquetCustomerDAO banquetCustomerDAO;
 
-//    @Autowired
-//    MenuDAO menuDAO;
+    @Autowired
+    MenuDAO menuDAO;
 
     @Autowired
     BanquetBillDAO banquetBillDAO;
