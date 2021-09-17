@@ -1,7 +1,7 @@
 package lk.sliit.hotel.entity.hr;
 
-import lk.sliit.hotelManagement.entity.SuperEntity;
-import lk.sliit.hotelManagement.entity.manager.Employee;
+import lk.sliit.hotel.entity.SuperEntity;
+import lk.sliit.hotel.entity.manager.Employee;
 
 import javax.persistence.*;
 import java.util.Date;
