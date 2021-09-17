@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class BanquetCustomer {
+public class BanquetCustomer{
    @Id
    int customerId;
    String name;
    String email;
    String address;
 
-   public BanquetCustomer(int customerId, String email, String name, String address, String contactNumber) {
+   public BanquetCustomer(int customerId, String email, String name, String address,String contactNumber) {
       this.customerId = customerId;
       this.email = email;
       this.name =name;
