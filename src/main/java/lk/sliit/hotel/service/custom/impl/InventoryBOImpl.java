@@ -3,6 +3,7 @@ package lk.sliit.hotel.service.custom.impl;
 import lk.sliit.hotel.dao.inventoryDAO.*;
 import lk.sliit.hotel.dto.inventory.*;
 import lk.sliit.hotel.entity.inventory.*;
+import lk.sliit.hotel.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
