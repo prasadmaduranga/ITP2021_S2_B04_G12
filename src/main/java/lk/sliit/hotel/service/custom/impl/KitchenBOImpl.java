@@ -28,6 +28,7 @@ import lk.sliit.hotel.entity.banquet.OrderLimit;
 import lk.sliit.hotel.entity.inventory.Inventory;
 import lk.sliit.hotel.entity.inventory.InventoryNotice;
 import lk.sliit.hotel.entity.kitchen.FoodItem;
+import lk.sliit.hotel.entity.kitchen.Menu;
 import lk.sliit.hotel.entity.kitchen.MenuDetails;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
@@ -188,7 +189,7 @@ public class KitchenBOImpl implements KitchenBO {
 
         for (MenuDetails item : menuItems) {
             menuDetailsDTO.add(new MenuDetailsDTO(
-                    item.getMenuDetailId().getMenu(),
+                    item.getMenuDetailId()
                     item.getMenuDetailId().getFoodItem()
             ));
         }
