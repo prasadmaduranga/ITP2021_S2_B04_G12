@@ -50,15 +50,15 @@ public class BanquetOrderController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("alert",alertMsg);
 
-        List<BanquetAddDTO> banquetOrderDTOS = banquetBO.findNextBanquets();
-        List<BanquetAddDTO> selected = new ArrayList<>();
-        for (BanquetAddDTO item: banquetOrderDTOS){
-            if (!item.getOrderState().equals(BanquetUtil.banquetStateCancel)){
-                selected.add(item);
-            }
-        }
+//     List<BanquetAddDTO> banquetOrderDTOS = banquetBO.findNextBanquets();
+//        List<BanquetAddDTO> selected = new ArrayList<>();
+//        for (BanquetAddDTO item: banquetOrderDTOS){
+//            if (!item.getOrderState().equals(BanquetUtil.banquetStateCancel)){
+//                selected.add(item);
+//            }
+//        }
 
-        model.addAttribute("confirmedBanquets", selected);
+      //  model.addAttribute("confirmedBanquets", selected);
 
         return "kitchenBanquetFoodOrderList";
     }
