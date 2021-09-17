@@ -1,14 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
   Date: 9/17/2021
-  Time: 6:17 PM
+  Time: 7:35 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Restaurant</title>
+
     <meta charset="utf-8">
     <title>Burger King - Food Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -55,8 +57,10 @@
 
 
     </style>
+
 </head>
-<body>
+<body >
+
 <!-- Nav Bar Start -->
 <div class="navbar navbar-expand-lg bg-light navbar-light">
     <div class="container-fluid">
@@ -184,11 +188,11 @@
                                                 <h3><span>${e.itemName}</span></h3>
                                             </td>
                                             <td class="menu-text" >
-                                                <h3><strong style="padding-left:380px;">${e.unitePrice}</strong></h3>
+                                                <h3><strong style="padding-left:330px;">${e.unitePrice}</strong></h3>
                                             </td>
 
                                             <td style="bottom: 0;
-                                                position: absolute;white-space:nowrap;top:40px;left:100px;">
+  position: absolute;white-space:nowrap;top:40px;left:100px;">
                                                 <p >${e.description}</p>
                                             </td>
                                             <td>
@@ -221,36 +225,35 @@
 
                                 <c:forEach items="${loadAllFoods}" var="e">
                                     <c:if test="${e.itemCategory == 'Appetizers' }">
-                                        <div class="menu-item">
-                                            <tr>
-                                                <td>
-                                                    <div class="menu-img">
-                                                        <img src="${e.src}" alt="Image">
-                                                    </div>
-                                                </td>
-                                                <div class="menu-text">
-                                                    <td >
 
-                                                        <h3> <span>${e.itemName} </span></h3>
-                                                    </td>
-                                                    <td>
-                                                        <h4><strong>${e.unitePrice}</strong></h4>
-                                                    </td>
-                                                        <%--                                                    <td>--%>
-                                                        <%--                                                        <p>${e.description}</p>--%>
-                                                        <%--                                                    </td>--%>
+                                        <tr class="menu-item">
+                                            <td>
+                                                <div class="menu-img">
+                                                    <img src="${e.src}" alt="Image">
                                                 </div>
-                                                <td><br>
+                                            </td>
 
-                                                    <button id="btnAdd2"
-                                                            style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
-                                                            type="button"><i class="fa fa-plus"></i></button>
-                                                </td>
-                                                    <%--                                        <td><br>Unite Price : ${e.unitePrice}</td>--%>
-                                                <td style="display: none" >${e.itemId}</td>
-                                                <td style="display: none" >${e.unitePrice}</td>
-                                            </tr>
-                                        </div>
+                                            <td class="menu-text" >
+                                                <h3><span>${e.itemName}</span></h3>
+                                            </td>
+                                            <td class="menu-text" >
+                                                <h3><strong style="padding-left:330px;">${e.unitePrice}</strong></h3>
+                                            </td>
+                                            <td style="bottom: 0;
+  position: absolute;white-space:nowrap;top:40px;left:100px;">
+                                                <p >${e.description}</p>
+                                            </td>
+
+                                            <td>
+
+                                                <button id="btnAdd2"
+                                                        style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
+                                                        type="button"><i class="fa fa-plus"></i></button>
+                                            </td>
+                                                <%--                                        <td><br>Unite Price : ${e.unitePrice}</td>--%>
+                                            <td style="display: none" >${e.itemId}</td>
+                                            <td style="display: none" >${e.unitePrice}</td>
+                                        </tr>
                                     </c:if>
                                 </c:forEach>
                             </table>
@@ -271,36 +274,35 @@
 
                                 <c:forEach items="${loadAllFoods}" var="e">
                                     <c:if test="${e.itemCategory == 'Rice & Noodles' }">
-                                        <div class="menu-item">
-                                            <tr>
-                                                <td>
-                                                    <div class="menu-img">
-                                                        <img src="${e.src}" alt="Image">
-                                                    </div>
-                                                </td>
-                                                <div class="menu-text">
-                                                    <td >
 
-                                                        <h3> <span>${e.itemName} </span></h3>
-                                                    </td>
-                                                    <td>
-                                                        <h4><strong>${e.unitePrice}</strong></h4>
-                                                    </td>
-                                                        <%--                                                    <td>--%>
-                                                        <%--                                                        <p>${e.description}</p>--%>
-                                                        <%--                                                    </td>--%>
+                                        <tr class="menu-item">
+                                            <td>
+                                                <div class="menu-img">
+                                                    <img src="${e.src}" alt="Image">
                                                 </div>
-                                                <td><br>
+                                            </td>
+                                            <td class="menu-text" >
+                                                <h3><span>${e.itemName}</span></h3>
+                                            </td>
+                                            <td class="menu-text" >
+                                                <h3><strong style="padding-left:380px;">${e.unitePrice}</strong></h3>
+                                            </td>
 
-                                                    <button id="btnAdd3"
-                                                            style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
-                                                            type="button"><i class="fa fa-plus"></i></button>
-                                                </td>
-                                                    <%--                                        <td><br>Unite Price : ${e.unitePrice}</td>--%>
-                                                <td style="display: none" >${e.itemId}</td>
-                                                <td style="display: none" >${e.unitePrice}</td>
-                                            </tr>
-                                        </div>
+                                            <td style="bottom: 0;
+  position: absolute;white-space:nowrap;top:40px;left:100px;">
+                                                <p >${e.description}</p>
+                                            </td>
+                                            <td>
+
+                                                <button id="btnAdd3"
+                                                        style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
+                                                        type="button"><i class="fa fa-plus"></i></button>
+                                            </td>
+                                                <%--                                        <td><br>Unite Price : ${e.unitePrice}</td>--%>
+                                            <td style="display: none" >${e.itemId}</td>
+                                            <td style="display: none" >${e.unitePrice}</td>
+                                        </tr>
+
                                     </c:if>
                                 </c:forEach>
                             </table>
@@ -310,6 +312,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <h1>Food Order</h1>
                 <div class="row contact-form">
                     <div class="col-md-6">
