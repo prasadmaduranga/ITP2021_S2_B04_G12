@@ -1,6 +1,7 @@
 package lk.sliit.hotel.entity.banquet;
 
 
+import lk.sliit.hotel.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotel.entity.kitchen.Menu;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class BanquetOrder {
     String orderState;
 
 
-    public BanquetOrder() {
+    public BanquetOrder(int orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy, BanquetCustomer one, Menu menuDAOOne, lk.sliit.hotel.controller.banquetController.BanquetBill banquetBillDAOOne) {
 
     }
 
@@ -42,6 +43,11 @@ public class BanquetOrder {
         this.banquetCustomer = banquetCustomer;
         this.menu = menu;
         this.banquetBill = banquetBill;
+    }
+
+    public BanquetOrder(int orderId, String hallId, String orderState, int noOfPlates, Date date,
+                        String submittedBy, BanquetCustomer banquetCustomer, Menu menu) {
+
     }
 
     public int getOrderId() {
@@ -114,5 +120,11 @@ public class BanquetOrder {
 
     public void setOrderState(String orderState) {
         this.orderState = orderState;
+    }
+
+
+    public BanquetCustomer getCustomer() {
+        return banquetCustomer;
+
     }
 }

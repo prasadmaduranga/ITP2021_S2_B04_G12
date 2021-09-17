@@ -24,4 +24,6 @@ public interface BanquetBO extends SuperBO {
     int checkHallOneAvailability(Date date);
 
     int checkHallTwoAvailabilityCheck(Date date);
+
+    List<BanquetAddDTO> findBanquetBill();
 }
