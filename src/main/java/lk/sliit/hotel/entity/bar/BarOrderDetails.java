@@ -16,6 +16,7 @@ public class BarOrderDetails implements SuperEntity {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="orderId",referencedColumnName = "orderId", insertable = false, updatable = false)
     private BarOrders order;
+
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="productId",referencedColumnName = "inventoryId", insertable = false, updatable = false)
     private Inventory inventory;
