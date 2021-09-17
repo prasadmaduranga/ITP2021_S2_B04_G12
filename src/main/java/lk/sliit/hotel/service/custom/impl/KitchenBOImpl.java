@@ -28,6 +28,7 @@ import lk.sliit.hotel.entity.banquet.OrderLimit;
 import lk.sliit.hotel.entity.inventory.Inventory;
 import lk.sliit.hotel.entity.inventory.InventoryNotice;
 import lk.sliit.hotel.entity.kitchen.FoodItem;
+import lk.sliit.hotel.entity.kitchen.KitchenFoodOrders;
 import lk.sliit.hotel.entity.kitchen.Menu;
 import lk.sliit.hotel.entity.kitchen.MenuDetails;
 import lk.sliit.hotel.entity.restaurant.counterOrder.RestaurantCounterOrder;
