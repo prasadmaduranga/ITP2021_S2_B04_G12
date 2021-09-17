@@ -18,7 +18,6 @@ public class BanquetController {
     public String LoginPage(Model model){
         ModelAndView mv = new ModelAndView("banquet");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
         return "banquet";
     }
 }

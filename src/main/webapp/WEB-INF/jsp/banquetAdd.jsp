@@ -513,7 +513,7 @@
     });
 </script>
 <script>
-    var dateControler = {
+    var dateController = {
         currentDate : null
     }
 
@@ -526,7 +526,7 @@
             alert("Invalid date... Please enter future date... Can't enter today and old dates");
 
         } else {
-            dateControler.currentDate = $(this).val();
+            dateController.currentDate = $(this).val();
         }
     });
 </script>
