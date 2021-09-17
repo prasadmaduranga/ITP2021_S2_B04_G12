@@ -1,11 +1,11 @@
 package lk.sliit.hotel.controller.kitchenController;
 
 
-import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
-import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
-import lk.sliit.hotelManagement.service.custom.KitchenBO;
+import lk.sliit.hotel.controller.SuperController;
+import lk.sliit.hotel.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotel.dto.restaurant.CounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotel.service.custom.IndexLoginBO;
+import lk.sliit.hotel.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
