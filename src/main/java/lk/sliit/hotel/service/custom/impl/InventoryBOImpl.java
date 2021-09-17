@@ -2,7 +2,9 @@ package lk.sliit.hotel.service.custom.impl;
 
 import lk.sliit.hotel.dao.inventoryDAO.*;
 import lk.sliit.hotel.dto.inventory.*;
+import lk.sliit.hotel.dto.reservation.ReservationDTO;
 import lk.sliit.hotel.entity.inventory.*;
+import lk.sliit.hotel.entity.reservation.Reservation;
 import lk.sliit.hotel.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Supplier;
 
 @Service
 @Transactional
@@ -84,7 +85,7 @@ public class InventoryBOImpl implements InventoryBO {
     public List<InventoryNoticeDTO> findDayAfterTomorrowNotice() {//find All Notice DayAfterTomorrow
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 2);
-        Date dayAfterTomorrow = cal.getTime();
+        java.util.Date dayAfterTomorrow = cal.getTime();
         Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(dayAfterTomorrow,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
@@ -108,7 +109,7 @@ public class InventoryBOImpl implements InventoryBO {
     public List<InventoryNoticeDTO> findTodayInventoryNotice() {//find All Notice Today
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
-        Date today = cal.getTime();
+        java.util.Date today = cal.getTime();
         Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(today,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
@@ -132,7 +133,7 @@ public class InventoryBOImpl implements InventoryBO {
     public List<InventoryNoticeDTO> findTomorrowInventoryNotice() {//find All Notice Tomorrow state false(not confirmed)
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
-        Date tomorrow = cal.getTime();
+        java.util.Date tomorrow = cal.getTime();
         Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(tomorrow,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
@@ -487,7 +488,7 @@ public class InventoryBOImpl implements InventoryBO {
     public List<InventoryNoticeDTO> stockOrderNotices(String val) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
-        Date beforeweek = cal.getTime();
+        java.util.Date beforeweek = cal.getTime();
         Date todaya = new Date();
         Iterable<InventoryNotice> allItems =
                 inventoryNoticeDAO.findAllByDateBetweenAndDepartmentEquals(beforeweek,todaya,val);
@@ -528,7 +529,7 @@ public class InventoryBOImpl implements InventoryBO {
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
-        Date beforeWeek = cal.getTime();
+        java.util.Date beforeWeek = cal.getTime();
         Iterable<InventoryOrder> allItems = inventoryOrderDAO.findAllByDateBetween(beforeWeek,todaydate);
         List<InventoryOrderDTO> dtos = new ArrayList<>();
         for (InventoryOrder itemType : allItems) {

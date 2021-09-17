@@ -2,7 +2,8 @@ package lk.sliit.hotel.service.custom.impl;
 
 import lk.sliit.hotel.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotel.dao.manageSystemDAO.NoticeDAO;
-import lk.sliit.hotel.dao.restaurantDAO.OnlineCustomerDAO;
+
+import lk.sliit.hotel.dao.retaurantDAO.OnlineCustomerDAO;
 import lk.sliit.hotel.dto.manager.EmployeeDTO;
 import lk.sliit.hotel.dto.manager.NoticeDTO;
 import lk.sliit.hotel.entity.manager.Employee;
