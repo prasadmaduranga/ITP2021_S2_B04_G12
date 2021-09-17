@@ -1,4 +1,4 @@
-package lk.sliit.hotelManagement.dto.reservation;
+package lk.sliit.hotel.dto.reservation;
 
 import java.sql.Date;
 

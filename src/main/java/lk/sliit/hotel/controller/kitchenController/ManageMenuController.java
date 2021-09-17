@@ -3,6 +3,7 @@ package lk.sliit.hotel.controller.kitchenController;
 import lk.sliit.hotel.controller.SuperController;
 import lk.sliit.hotel.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotel.dto.kitchen.MenuDTO;
+import lk.sliit.hotel.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
 import lk.sliit.hotel.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;

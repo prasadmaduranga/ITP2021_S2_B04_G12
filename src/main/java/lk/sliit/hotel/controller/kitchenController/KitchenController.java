@@ -6,6 +6,7 @@ import lk.sliit.hotel.dto.inventory.InventoryDTO;
 import lk.sliit.hotel.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotel.dto.kitchen.*;
 import lk.sliit.hotel.service.custom.IndexLoginBO;
+import lk.sliit.hotel.service.custom.InventoryBO;
 import lk.sliit.hotel.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
