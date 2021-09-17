@@ -22,12 +22,12 @@ public class Customer {
     private String password;
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Reservation> reservations = new ArrayList<>();
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    private List<GeneralBill> generalBills = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+//    private List<GeneralBill> generalBills = new ArrayList<>();
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<LaundryBill> laundryBills = new ArrayList<>();
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    private List<BanquetOrder> banquetOrders = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+//    private List<BanquetOrder> banquetOrders = new ArrayList<>();
 
 
     public Customer(int customerId, String email, String name,

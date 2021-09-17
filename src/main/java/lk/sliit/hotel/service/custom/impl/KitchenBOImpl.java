@@ -9,10 +9,6 @@ import lk.sliit.hotel.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotel.dao.kitchenDAO.KitchenFoodOrderDAO;
 import lk.sliit.hotel.dao.kitchenDAO.MenuDAO;
 import lk.sliit.hotel.dao.kitchenDAO.MenuDetailsDAO;
-import lk.sliit.hotel.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
-import lk.sliit.hotel.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
-import lk.sliit.hotel.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
-import lk.sliit.hotel.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotel.dao.retaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotel.dao.retaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
@@ -190,7 +186,7 @@ public class KitchenBOImpl implements KitchenBO {
 
         for (MenuDetails item : menuItems) {
             menuDetailsDTO.add(new MenuDetailsDTO(
-                    item.getMenuDetailId()
+                    item.getMenuDetailId().getMenu(),
                     item.getMenuDetailId().getFoodItem()
             ));
         }
